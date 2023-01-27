@@ -14,6 +14,8 @@ CSS Giphy is an app where users can view a database of user created CSS animatio
 
 -   [Wireframes](https://www.figma.com/file/g76YgWIyT3rpwRORYhhRxl/CSSclips?node-id=0%3A1&t=CbeFnI6NZkVwaiTI-1 "Figma Wireframes")
 
+-   [ERD](https://lucid.app/lucidchart/5f8c4e99-2a6d-4141-9767-383d972d3539/edit?viewport_loc=-133%2C181%2C1936%2C1024%2C0_0&invitationId=inv_b147fe33-04b3-4390-87c7-63998297fbd9, "Lucid ERD")
+
 ## How to Install and Run the Project
 
 You must have a virtual environment setup to run this project locally. This project is made with Django/Python, so it uses the Python package manager Pip. If you're using Pip...
