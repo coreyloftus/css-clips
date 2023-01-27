@@ -1,0 +1,17 @@
+#sun {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: radial-gradient(circle at center, #ff7e00, #ffff00);
+    animation: sunrise-sunset 10s linear infinite;
+    animation-direction: alternate;
+}
+
+@keyframes sunrise-sunset {
+    0% {
+        background: radial-gradient(circle at center, #ff7e00, #ffff00);
+    }
+    100% {
+        background: radial-gradient(circle at center, #ffff00, #ff7e00);
+    }
+}
