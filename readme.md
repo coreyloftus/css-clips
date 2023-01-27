@@ -1,8 +1,6 @@
-<h1><project-name></h1>
+# CSS Giphy
 
-<p><project-description></p>
-
-CSS-Giphy is an app where users can view a database of user created CSS animations in a grid display.
+CSS Giphy is an app where users can view a database of user created CSS animations in a grid display.
 
 ## Screenshots
 
@@ -10,7 +8,7 @@ CSS-Giphy is an app where users can view a database of user created CSS animatio
 
 ## Links
 
--   [Repo]( "<project-name> Repo")
+-   [Repo](https://github.com/coreyloftus/css-giphy/edit/main/readme.md "Repo")
 
 -   [Bugs](https://github.com/coreyloftus/<project-name>/issues "Issues Page")
 
