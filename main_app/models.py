@@ -5,7 +5,9 @@ from django.db import models
 
 class Clip(models.Model):
     title = models.CharField(max_length=300)
-    body = models.CharField(max_length=10000)
+    html = models.TextField(max_length=10000, default='<div></div>')
+    css = models.TextField(
+        max_length=10000, default='border:4mm ridge rgba(211, 220, 50, .6);')
     difficulty = models.CharField(max_length=5, default=1)
     created_at = models.DateTimeField(auto_now_add=True)
 

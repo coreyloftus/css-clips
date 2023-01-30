@@ -1,16 +1,23 @@
 {% extends 'base.html' %}{% block title %}{% endblock %} {% block content %}
-<h1>Game Detail Route here for clip {{clip.title}}</h1>
-<div>
-    <p><span class="subtitle is-5">Body: </span><pre>{{clip.body}}</pre></p>
-    <p><span class="subtitle is-5">Difficulty: </span>{{clip.difficulty}}</p>
-    <p><span class="subtitle is-5">Created at: </span>{{clip.created_at}}</p>
+<h1>Detail Route for: <span class="has-text-weight-bold">{{clip.title}}</span></h1>
+<div class="is-flex is-flex-direction-row is-justify-content-space-evenly is-align-items-center">
+    <div>
+        <div style="width:300px; height:300px; {{clip.css}}">
+            {{clip.html | safe}}<style media="screen">{{clip.css | safe}}</style>
+        </div>
+    </div>
+    <div class="is-flex is-align-items-center is-justify-content-center" style="border:2rem ridge rgba(211,220,50,.6); width:300px; height:300px;">
+        <p class="is-size-3">sanity check</p>
+    </div>
 </div>
-<div style="width: 300px; height: 300px">
-    {% comment %}
-    <p>container div should be here</p>
-    {% endcomment %}
-    <div class="body" style="{{clip.body}} width:300px; height:300px;">
-        <p>clip.body should style the div here</p>
+<div>
+    <div class="is-flex">
+        <p><span class="subtitle is-5">HTML: </span><pre>{{clip.html}}</pre></p>
+        <p><span class="subtitle is-5">CSS: </span><pre>{{clip.css}}</pre></p>
+        <div>
+        <p><span class="subtitle is-5">Difficulty: </span>{{clip.difficulty}}</p>
+        <p><span class="subtitle is-5">Created at: </span>{{clip.created_at}}</p>
+        </div>
     </div>
 </div>
 <div class="buttons">

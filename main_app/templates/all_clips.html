@@ -2,16 +2,16 @@
 <div class="gallery"></div>
 {% for clip in clips %}
 <a href="{% url 'clip_detail' clip.pk %}">
-<div class="card">
-    <div class="card-header">
-        <p class="title is-4">{{clip.title}}</p>
+    <div class="card">
+        <div class="card-header">
+            <p class="title is-4">{{clip.title}}</p>
+        </div>
+        <div class="card-content">
+            <p><span class="subtitle is-5">Title: </span>{{clip.title}}</p>
+            <p><span class="subtitle is-5">Difficulty: </span>{{clip.difficulty}}</p>
+            <p><span class="subtitle is-5">Created at: </span>{{clip.created_at}}</p>
+        </div>
     </div>
-    <div class="card-content">
-        <p><span class="subtitle is-5">Body: </span><pre>{{clip.body}}</pre></p>
-        <p><span class="subtitle is-5">Difficulty: </span>{{clip.difficulty}}</p>
-        <p><span class="subtitle is-5">Created at: </span>{{clip.created_at}}</p>
-    </div>
-</div>
 </a>
 {% empty %}
 <article class="message">

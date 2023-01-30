@@ -1,4 +1,4 @@
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 
@@ -41,12 +41,16 @@ class ClipDetail(DetailView):
     model = Clip
     template_name = 'clip_detail.html'
 
+    def detail_view(request, item_id):
+        clip = Clip.objects.get(id=item_id)
+        return render(request, 'clip_live.html', {'clip': clip})
+
 # create route
 
 
 class ClipCreate(CreateView):
     model = Clip
-    fields = ['title', 'body', 'difficulty']
+    fields = ['title', 'html', 'css', 'difficulty']
     template_name = 'clip_create.html'
     success_url = '/clips/'
 
@@ -63,7 +67,7 @@ class ClipDelete(DeleteView):
 
 class ClipUpdate(UpdateView):
     model = Clip
-    fields = ['title', 'body', 'difficulty']
+    fields = ['title', 'html', 'css', 'difficulty']
     template_name = 'clip_update.html'
 
     def get_success_url(self):
