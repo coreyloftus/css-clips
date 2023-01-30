@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from .models import *
 from django.views import View
 from django.views.generic.base import TemplateView
-
+from django.views.generic.edit import CreateView
 # Create your views here.
 
 
@@ -18,3 +18,10 @@ class About(TemplateView):
 
 class AllClips(TemplateView):
     template_name = 'all_clips.html'
+
+
+class ClipCreate(CreateView):
+    model = Clip
+    fields = ['title', 'body', 'difficulty']
+    template_name = 'clip_create.html'
+    success_url = '/clips/'
