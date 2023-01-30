@@ -14,3 +14,7 @@ class Home(TemplateView):
 
 class About(TemplateView):
     template_name = 'about.html'
+
+
+class AllClips(TemplateView):
+    template_name = 'all_clips.html'
