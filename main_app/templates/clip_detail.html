@@ -13,4 +13,11 @@
         <p>clip.body should style the div here</p>
     </div>
 </div>
+<div>
+    <a href="{% url 'clip_delete' clip.pk %}" class="button is-danger">
+        <span class="icon">
+            <i class="fas fa-trash-alt"></i>
+        </span>
+    </a>
+</div>
 {% endblock %}
