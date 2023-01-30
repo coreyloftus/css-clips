@@ -5,6 +5,7 @@ from .models import *
 from django.views import View
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView
+from django.views.generic.detail import DetailView
 # Create your views here.
 
 
@@ -18,6 +19,11 @@ class About(TemplateView):
 
 class AllClips(TemplateView):
     template_name = 'all_clips.html'
+
+
+class ClipDetail(DetailView):
+    model = Clip
+    template_name = 'clip_detail.html'
 
 
 class ClipCreate(CreateView):

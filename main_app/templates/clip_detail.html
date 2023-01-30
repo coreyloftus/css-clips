@@ -1,0 +1,8 @@
+{% extends 'base.html' %}{% block title %}{% endblock %} {% block content %}
+<h1>Game Detail Route here for clip {{clip.title}}</h1>
+<div>
+    <p><span class="subtitle is-5">Body: </span>{{clip.body}}</p>
+    <p><span class="subtitle is-5">Difficulty: </span>{{clip.difficulty}}</p>
+    <p><span class="subtitle is-5">Created at: </span>{{clip.created_at}}</p>
+</div>
+{% endblock %}
