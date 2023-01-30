@@ -20,6 +20,17 @@ class About(TemplateView):
 class AllClips(TemplateView):
     template_name = 'all_clips.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        title = self.request.GET.get("title")
+        if title != None:
+            context['clips'] = Clip.objects.filter(title__icontains=title)
+            context['header'] = f'Searching for {title}'
+        else:
+            context['clips'] = Clip.objects.all()
+            context['header'] = 'Clip Collection Index'
+        return context
+
 
 class ClipDetail(DetailView):
     model = Clip
