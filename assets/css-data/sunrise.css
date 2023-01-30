@@ -15,3 +15,13 @@
         background: radial-gradient(circle at center, #ffff00, #ff7e00);
     }
 }
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.red-circle {
+    background-color: red;
+    border-radius: 50%;
+}
