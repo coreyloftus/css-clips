@@ -13,7 +13,12 @@
         <p>clip.body should style the div here</p>
     </div>
 </div>
-<div>
+<div class="buttons">
+    <a href="{% url 'clip_update' clip.pk %}" class="button is-info">
+        <span class="icon">
+            <i class="fas fa-edit"></i>
+        </span>
+    </a>
     <a href="{% url 'clip_delete' clip.pk %}" class="button is-danger">
         <span class="icon">
             <i class="fas fa-trash-alt"></i>

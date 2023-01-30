@@ -1,10 +1,11 @@
 from django.shortcuts import redirect
 from django.http import HttpResponse
+from django.urls import reverse_lazy
 
 from .models import *
 from django.views import View
 from django.views.generic.base import TemplateView
-from django.views.generic.edit import CreateView, DeleteView
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.detail import DetailView
 # Create your views here.
 
@@ -15,6 +16,8 @@ class Home(TemplateView):
 
 class About(TemplateView):
     template_name = 'about.html'
+
+# index route
 
 
 class AllClips(TemplateView):
@@ -31,10 +34,14 @@ class AllClips(TemplateView):
             context['header'] = 'Clip Collection Index'
         return context
 
+# show route
+
 
 class ClipDetail(DetailView):
     model = Clip
     template_name = 'clip_detail.html'
+
+# create route
 
 
 class ClipCreate(CreateView):
@@ -50,4 +57,15 @@ class ClipDelete(DeleteView):
     model = Clip
     template_name = "clip_delete_confirmation.html"
     success_url = "/clips/"
+
 # edit route
+
+
+class ClipUpdate(UpdateView):
+    model = Clip
+    fields = ['title', 'body', 'difficulty']
+    template_name = 'clip_update.html'
+
+    def get_success_url(self):
+        return reverse_lazy('clip_detail', kwargs={'pk': self.object.pk})
+    # success_url = '/clips/'
