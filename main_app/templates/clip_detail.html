@@ -5,4 +5,10 @@
     <p><span class="subtitle is-5">Difficulty: </span>{{clip.difficulty}}</p>
     <p><span class="subtitle is-5">Created at: </span>{{clip.created_at}}</p>
 </div>
+<div style="width: 100px; height: 100px">
+    <p>container div should be here</p>
+    <div class="body" style="{{clip.body}}">
+        <p>styled body div should be here</p>
+    </div>
+</div>
 {% endblock %}

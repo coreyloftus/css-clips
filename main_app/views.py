@@ -31,3 +31,6 @@ class ClipCreate(CreateView):
     fields = ['title', 'body', 'difficulty']
     template_name = 'clip_create.html'
     success_url = '/clips/'
+
+# edit route
+# delete route
