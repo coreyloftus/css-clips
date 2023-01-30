@@ -22,15 +22,18 @@ An app where users can view a database of user created CSS animations in a grid 
 - user ability to save favorites, view them on user's detail page
 
 ## User Stories
-My user is someone who wants to find and share small CSS animations for use on their own websites. For styling my own pages, I've found a lot of inspiration by seeing cool animations from other sites around the web. But there's no destination to find a LOT of them all at once. I had this vision of a site like Giphy, that displays CSS animations in a way where it's easy to see a lot of them, and then reference the code to learn and adapt it for my own use. I haven't found it. So I figured I'd have to make it, myself. And I'm thinking there are a lot of other people who may feel the same as me.
 
--   user can view index route of all clips
--   user can search for clips by title
--   user can view clips by difficulty level
--   user can login (auth)
--   user can add, edit, delete own clips
--   user can favorite others' animations
--   user can view their own favorites on own profile detail route
+My user is someone who wants to discover, create, share small CSS animations. For styling my own pages, I've found a lot of inspiration by seeing cool animations from other sites around the web. But there's no destination to find a LOT of them all at once. I had this vision of a site like Giphy, that displays CSS animations in a way where it's easy to see a lot of them, and then reference the code to learn and adapt it for my own use. I haven't found it. I figured if it was something I was looking for, others must be, too. This is my go at making an easily viewable and searchable CSS animations library.
+
+-   As a user:
+    -   I can view a grid of different CSS animations on the home page.
+    -   I can search for clips by title via a search bar on the home page.
+    -   I can add, edit, delete my own clips.
+    -   I can add tags to my clips.
+    -   (STRETCH) I can sort clips by difficulty level.
+    -   (STRETCH) I can login.
+    -   (STRETCH) I can favorite animations.
+    -   (STRETCH) I can view clips I've favorited.
 
 ## Milestones
 ### Day 1
