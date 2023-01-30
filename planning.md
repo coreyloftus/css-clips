@@ -1,16 +1,22 @@
 # CSS-Clips
 
 An app where users can view a database of user created CSS animations in a grid display.
-(Giphy, but for CSS animations.)
+(Giphy, for CSS animations.)
+
+## the TL;DR
+- Tech Stack
+    - Django
+    - Python
+    - SQL
+- Viewable, searchable database of user submitted CSS animations
 
 ## MVP Goals
- -   Django, Python, SQL tech stack
  -   grid of window frames that each display a simple CSS animation
+ -   each CSS clip renders on its own detail page
  -   full CRUD for user's own clips
  -   each animation has tags
  -   search bar
         -   can search by clip title
- - each CSS clip renders on its own detail page
  - basic Bulma styling for site
 
 ## Stretch Goals
@@ -65,19 +71,3 @@ Stretch will include auth for multiple users, as well as tags, introducting Many
 
 ### Lucid ERD link
 [CSS Clips on Lucid ERD](https://lucid.app/lucidchart/5f8c4e99-2a6d-4141-9767-383d972d3539/edit?viewport_loc=-133%2C181%2C1936%2C1024%2C0_0&invitationId=inv_b147fe33-04b3-4390-87c7-63998297fbd9, "Lucid ERD")
-
-## Summary
--   Tech Stack:
-    -   Django/Python
--   App Summary:
-    -   CSS-Giphy: An app where users can view a database of user created CSS animations in a grid display
--   Key Features:
-    -   Users can search by animation title
-    -   Users can create animations
--   Stretch Features:
-    -   Auth/login for users
-    -   Users can update and destroy own animations
-    -   Users can add tags to their animations
-    -   Users can search by tags
-    -   Users can favorite an animation
-        -   view their favorites collection
