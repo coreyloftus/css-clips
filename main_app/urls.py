@@ -3,5 +3,9 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
-    path('home/', views.Home.as_view(), name='home'),
+    path('', views.Home.as_view(), name='home'),
+    path('about/', views.About.as_view(), name='about'),
+    path('clips/', views.AllClips.as_view(), name="all_clips"),
+    path('clips/<int:pk>', views.ClipDetail.as_view(), name="clip_detail"),
+    path('clips/new', views.ClipCreate.as_view(), name="clip_create"),
 ]
