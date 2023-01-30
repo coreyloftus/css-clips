@@ -48,14 +48,20 @@ My user is someone who wants to find and share small CSS animations for use on t
 - Deploy, additional styling, stretch goals
 
 ## Initial Wireframes
-[Figma](https://www.figma.com/file/g76YgWIyT3rpwRORYhhRxl/CSSclips?node-id=0%3A1&t=CbeFnI6NZkVwaiTI-1 "Figma")
+### Desktop Wireframe
 ![Desktop Wireframe](assets/planning-images/css-clips-wireframe-desktop.png)
+### Mobile Wireframe
 ![Mobile Wireframe](assets/planning-images/css-clips-wireframe-mobile.png)
+### Figma Link
+[CSS Clips on Figma](https://www.figma.com/file/g76YgWIyT3rpwRORYhhRxl/CSSclips?node-id=0%3A1&t=CbeFnI6NZkVwaiTI-1 "Figma")
 
 ## ERD
-
--   [Lucid ERD](https://lucid.app/lucidchart/5f8c4e99-2a6d-4141-9767-383d972d3539/edit?viewport_loc=-133%2C181%2C1936%2C1024%2C0_0&invitationId=inv_b147fe33-04b3-4390-87c7-63998297fbd9, "Lucid ERD")
+MVP will have a 1-many relationship (User -> Posts)
+Stretch will include auth for multiple users, as well as tags, introducting Many-Many relationships (Users -> Posts, Posts -> Tags)
 ![CSS Clips ERD](assets/planning-images/css-clips-erd.png)
+
+### Lucid ERD link
+[CSS Clips on Lucid ERD](https://lucid.app/lucidchart/5f8c4e99-2a6d-4141-9767-383d972d3539/edit?viewport_loc=-133%2C181%2C1936%2C1024%2C0_0&invitationId=inv_b147fe33-04b3-4390-87c7-63998297fbd9, "Lucid ERD")
 
 ## Summary
 -   Tech Stack:
