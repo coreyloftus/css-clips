@@ -27,12 +27,26 @@ class AllClips(TemplateView):
         context = super().get_context_data(**kwargs)
         title = self.request.GET.get("title")
         if title != None:
-            context['clips'] = Clip.objects.filter(title__icontains=title)
+            context['clips'] = User.objects.filter(title__icontains=title, user=self.request.user)
             context['header'] = f'Searching for {title}'
         else:
-            context['clips'] = Clip.objects.all()
+            context['clips'] = Clip.objects.filter(user=self.request.user)
             context['header'] = 'Clip Collection Index'
         return context
+
+# class AllClips(TemplateView):
+#     template_name = 'all_clips.html'
+
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         title = self.request.GET.get("title")
+#         if title != None:
+#             context['clips'] = Clip.objects.filter(title__icontains=title)
+#             context['header'] = f'Searching for {title}'
+#         else:
+#             context['clips'] = Clip.objects.all()
+#             context['header'] = 'Clip Collection Index'
+#         return context
 
 # show route
 
