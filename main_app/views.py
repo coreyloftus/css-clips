@@ -14,7 +14,7 @@ from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
-from django.views.generic.detail import DetailView
+from django.views.generic.detail import DetailView, SingleObjectMixin
 # Create your views here.
 
 
@@ -125,3 +125,41 @@ class SignUp(View):
         else:
             context = {"form": form}
             return render(request, "registration/signup.html", context)
+
+
+class Profile(TemplateView):
+    model = Profile
+    # get user profile data based on username param
+
+    def get(self, request, username):
+        try:
+            user = User.objects.get(username=username)
+        except User.DoesNotExist:
+            return render(request, 'error.html', {'error_message': 'User not found'})
+
+    # pass user data to template
+        user_data = {
+            'username': user.username,
+            'email': user.email,
+            'first_name': user.first_name,
+            'last_name': user.last_name
+        }
+    # Render the template with the user data
+        return render(request, 'profile.html', {'user_data': user_data})
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        title = self.request.GET.get("title")
+        if title != None:
+            context['clips'] = Clip.objects.filter(title__icontains=title)
+            print(context['clips'])
+            context['header'] = f'Searching for {title}'
+        else:
+            context['clips'] = Clip.objects.all()
+            print(context['clips'])
+            context['header'] = 'Clip Collection Index'
+        return context
+
+
+class ProfileUpdate(Profile, UpdateView):
+    pass

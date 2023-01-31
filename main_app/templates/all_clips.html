@@ -1,23 +1,23 @@
 {% extends 'base.html' %} {% block title %} Clips Index {% endblock %} {% block content %}
-<div class="gallery mt-4 mx-4">
+<div class="columns is-multiline mt-4 mx-4">
     {% for clip in clips %}
     <a href="{% url 'clip_detail' clip.pk %}">
-        <div class="card">
-            <div class="card-header">
+        <div class="column">
+            <div class="">
                 <p class="title is-4">{{clip.title}}</p>
             </div>
-            <div class="card-content">
-                <div>
-                    <div style="width: 300px; height: 300px">
-                        {{clip.html | safe}}<style media="screen">
-                            {{clip.css | safe}}
-                        </style>
-                    </div>
+            <div class="" style="">
+                <div class="is-clipped" style="width: 305px; height: 305px; border: 5px ridge rgba(211, 220, 50, 0.6)">
+                    {{clip.html | safe}}<style media="screen">
+                        {{clip.css | safe}}
+                    </style>
                 </div>
-                <p><span class="subtitle is-5">Title: </span>{{clip.title}}</p>
-                <p><span class="subtitle is-5">Difficulty: </span>{{clip.difficulty}}</p>
-                <p><span class="subtitle is-5">Created at: </span>{{clip.created_at|date:"Y-m-d H:i"}}</p>
-                <p><span class="subtitle is-5">Made by: </span>{{clip.owner}}</p>
+            </div>
+            <div class="">
+                <p><span class="subtitle is-5">{{clip.title}}</span></p>
+                <p>
+                    <span class="subtitle is-5">by: </span><span><a href="/profile/{{clip.owner}}">{{clip.owner}}</a></span>
+                </p>
             </div>
         </div>
     </a>

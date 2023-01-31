@@ -1,5 +1,5 @@
 {% extends 'base.html' %}{% block title %}{% endblock %} {% block content %}
-<h1>Detail Route for: <span class="has-text-weight-bold">{{clip.title}}</span></h1>
+<h1><span class="has-text-weight-bold">{{clip.title}}</span> by <span><a href="/profile/{{clip.owner}}">{{clip.owner}}</a></span></h1>
 <div class="py-4">
     {% if user.is_authenticated and user.id == clip.owner_id %}
     <div class="is-flex is-align-items-center">
