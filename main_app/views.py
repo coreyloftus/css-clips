@@ -1,8 +1,13 @@
-from django.shortcuts import redirect, render
-from django.http import HttpResponse
-from django.urls import reverse_lazy
-
 from .models import *
+
+from django.shortcuts import redirect, render
+
+from django.http import HttpResponse
+from django.urls import reverse_lazy, reverse
+
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
+
 from django.views import View
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
@@ -27,7 +32,8 @@ class AllClips(TemplateView):
         context = super().get_context_data(**kwargs)
         title = self.request.GET.get("title")
         if title != None:
-            context['clips'] = User.objects.filter(title__icontains=title, user=self.request.user)
+            context['clips'] = User.objects.filter(
+                title__icontains=title, user=self.request.user)
             context['header'] = f'Searching for {title}'
         else:
             context['clips'] = Clip.objects.filter(user=self.request.user)
@@ -66,7 +72,15 @@ class ClipCreate(CreateView):
     model = Clip
     fields = ['title', 'html', 'css', 'difficulty']
     template_name = 'clip_create.html'
-    success_url = '/clips/'
+    # success_url = '/clips/'
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(ClipCreate, self).form_valid(form)
+
+    def get_success_url(self):
+        print(self.kwargs)
+        return reverse('clip_detail', kwargs={'pk': self.object.pk})
 
 # delete route
 
@@ -87,3 +101,20 @@ class ClipUpdate(UpdateView):
     def get_success_url(self):
         return reverse_lazy('clip_detail', kwargs={'pk': self.object.pk})
     # success_url = '/clips/'
+
+
+class SignUp(View):
+    def get(self, request):
+        form = UserCreationForm()
+        context = {"form": form}
+        return render(request, "registration/signup.html", context)
+
+    def post(self, request):
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect("all_clips")
+        else:
+            context = {"form": form}
+            return render(request, "registration/signup.html", context)
