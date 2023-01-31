@@ -1,6 +1,6 @@
 {%load static%}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="has-background-light">
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -51,16 +51,19 @@
                     <div class="navbar-item">
                         <div class="buttons">
                             {% if user.is_authenticated %}
-                            <span class="navbar-item">Welcome: {{user.username}}</span>
+                            <span class="navbar-item">username: <a href="/profile/{{user.username}}"> {{user.username}}</a></span>
                             <a class="button is-light" href="{% url 'logout'%}"> Log Out </a>
                             {% else %}
                             <a class="button is-light" href="{% url 'login'%}"> Log in </a>
+                            <a class="button is-primary" href="{% url 'signup'%}"> Sign Up </a>
                             {% endif %}
                         </div>
                     </div>
                 </div>
             </div>
         </nav>
-        {% block content %} {% endblock %}
+        <div class="mgb-4">
+            {% block content %} {% endblock %}
+        </div>
     </body>
 </html>
