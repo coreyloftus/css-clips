@@ -1,23 +1,25 @@
 {% extends 'base.html' %} {% block title %} Clips Index {% endblock %} {% block content %}
-<div class="gallery"></div>
-{% for clip in clips %}
-<a href="{% url 'clip_detail' clip.pk %}">
-    <div class="card">
-        <div class="card-header">
-            <p class="title is-4">{{clip.title}}</p>
+<div class="gallery mt-4 mx-4">
+    {% for clip in clips %}
+    <a href="{% url 'clip_detail' clip.pk %}">
+        <div class="card">
+            <div class="card-header">
+                <p class="title is-4">{{clip.title}}</p>
+            </div>
+            <div class="card-content">
+                <p><span class="subtitle is-5">Title: </span>{{clip.title}}</p>
+                <p><span class="subtitle is-5">Difficulty: </span>{{clip.difficulty}}</p>
+                <p><span class="subtitle is-5">Created at: </span>{{clip.created_at|date:"Y-m-d H:i"}}</p>
+                <p><span class="subtitle is-5">Made by: </span>{{clip.owner}}</p>
+            </div>
         </div>
-        <div class="card-content">
-            <p><span class="subtitle is-5">Title: </span>{{clip.title}}</p>
-            <p><span class="subtitle is-5">Difficulty: </span>{{clip.difficulty}}</p>
-            <p><span class="subtitle is-5">Created at: </span>{{clip.created_at|date:"Y-m-d H:i"}}</p>
-            <p><span class="subtitle is-5">Made by: </span>{{clip.owner}}</p>
+    </a>
+    {% empty %}
+    <article class="message">
+        <div class="message-header is-warning">
+            <p class="is-warning">No clips in index</p>
         </div>
-    </div>
-</a>
-{% empty %}
-<article class="message">
-    <div class="message-header is-warning">
-        <p class="is-warning">No clips in index</p>
-    </div>
-</article>
-{% endfor %} {% endblock %}
+    </article>
+    {% endfor %}
+</div>
+{% endblock %}
