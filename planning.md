@@ -71,3 +71,9 @@ Stretch will include auth for multiple users, as well as tags, introducting Many
 
 ### Lucid ERD link
 [CSS Clips on Lucid ERD](https://lucid.app/lucidchart/5f8c4e99-2a6d-4141-9767-383d972d3539/edit?viewport_loc=-133%2C181%2C1936%2C1024%2C0_0&invitationId=inv_b147fe33-04b3-4390-87c7-63998297fbd9, "Lucid ERD")
+
+
+
+
+INSERT INTO auth_user (username, password, first_name, last_name, email, is_staff, is_active,  is_superuser, date_joined) 
+VALUES ('loftylotus', 'loftylotus', 'corey', 'loftus', 'coreyloftus@gmail.com', True, True, True, '2023-01-31 00:00:00');
