@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth.decorators import login_required, permission_required
 from . import views
 
 urlpatterns = [
@@ -10,5 +11,5 @@ urlpatterns = [
     path('clips/<int:pk>', views.ClipDetail.as_view(), name="clip_detail"),
     path('clips/<int:pk>/delete', views.ClipDelete.as_view(), name="clip_delete"),
     path('clips/<int:pk>/update', views.ClipUpdate.as_view(), name="clip_update"),
-    path('accounts/signup/', views.SignUp.as_view(), name="signup")
+    path('accounts/signup/', views.SignUp.as_view(), name="signup"),
 ]

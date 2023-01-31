@@ -1,35 +1,39 @@
 {% extends 'base.html' %}{% block title %}{% endblock %} {% block content %}
-<h1>Detail Route for: <span class="has-text-weight-bold">{{clip.title}}</span></h1>
-<div class="is-flex is-flex-direction-row is-justify-content-space-evenly is-align-items-center">
-    <div>
-        <div style="width:300px; height:300px;">
-            {{clip.html | safe}}<style media="screen">{{clip.css | safe}}</style>
-        </div>
-    </div>
-    <div class="is-flex is-align-items-center is-justify-content-center" style="border:2rem ridge rgba(211,220,50,.6); width:300px; height:300px;">
-        <p class="is-size-3">sanity check</p>
-    </div>
-</div>
-<div>
+<div class="is-flex is-flex-direction-column is-align-items-center py-4">
     <div class="is-flex">
-        <p><span class="subtitle is-5">HTML: </span><pre>{{clip.html}}</pre></p>
-        <p><span class="subtitle is-5">CSS: </span><pre>{{clip.css}}</pre></p>
-        <div>
-        <p><span class="subtitle is-5">Difficulty: </span>{{clip.difficulty}}</p>
-        <p><span class="subtitle is-5">Created at: </span>{{clip.created_at}}</p>
+        <h1>Detail Route for: <span class="has-text-weight-bold">{{clip.title}}</span></h1>
+        {% if user.is_authenticated %}
+        <div class="buttons mx-4">
+            <a href="{% url 'clip_update' clip.pk %}" class="button is-info">
+                <span class="icon">
+                    <i class="fas fa-edit"></i>
+                </span>
+            </a>
+            <a href="{% url 'clip_delete' clip.pk %}" class="button is-danger">
+                <span class="icon">
+                    <i class="fas fa-trash-alt"></i>
+                </span>
+            </a>
         </div>
     </div>
-</div>
-<div class="buttons">
-    <a href="{% url 'clip_update' clip.pk %}" class="button is-info">
-        <span class="icon">
-            <i class="fas fa-edit"></i>
-        </span>
-    </a>
-    <a href="{% url 'clip_delete' clip.pk %}" class="button is-danger">
-        <span class="icon">
-            <i class="fas fa-trash-alt"></i>
-        </span>
-    </a>
+    {% endif %}
+    <div class="is-flex is-flex-direction-row is-justify-content-space-evenly is-align-items-center">
+        <div>
+            <div style="width:300px; height:300px;">
+                {{clip.html | safe}}<style media="screen">{{clip.css | safe}}</style>
+            </div>
+        </div>
+        <div>
+            <p><span class="subtitle is-5">Difficulty: </span>{{clip.difficulty}}</p>
+            <p><span class="subtitle is-5">Created at: </span>{{clip.created_at}}</p>
+            <p><span class="subtitle is-5">Tags: </span>{{clip.tags}}</p>
+            </div>
+    </div>
+    <div>
+        <div class="is-flex">
+            <p><span class="subtitle is-5">HTML: </span><pre>{{clip.html}}</pre></p>
+            <p><span class="subtitle is-5">CSS: </span><pre>{{clip.css}}</pre></p>
+        </div>
+    </div>
 </div>
 {% endblock %}
