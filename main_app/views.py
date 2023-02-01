@@ -21,6 +21,11 @@ from django.views.generic.detail import DetailView, SingleObjectMixin
 class Home(TemplateView):
     template_name = 'home.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["tags"] = Tag.objects.all()
+        return context
+
 
 class About(TemplateView):
     template_name = 'about.html'
@@ -55,6 +60,7 @@ class AllClips(TemplateView):
             context['header'] = f'Searching for {title}'
         else:
             context['clips'] = Clip.objects.all()
+            context["tags"] = Tag.objects.all()
             context['header'] = 'Clip Collection Index'
         return context
 
@@ -65,9 +71,10 @@ class ClipDetail(DetailView):
     model = Clip
     template_name = 'clip_detail.html'
 
-    def detail_view(request, item_id):
-        clip = Clip.objects.get(id=item_id)
-        return render(request, 'clip_live.html', {'clip': clip})
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        print(context)
+        return context
 
 # create route
 
@@ -76,7 +83,7 @@ class ClipCreate(LoginRequiredMixin, CreateView):
     login_url = '/login/'
     redirect_field_name = 'redirect_to'
     model = Clip
-    fields = ['title', 'html', 'css', 'difficulty']
+    fields = ['title', 'html', 'css', 'difficulty', 'tags']
     template_name = 'clip_create.html'
     # success_url = '/clips/'
 

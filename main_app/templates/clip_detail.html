@@ -26,7 +26,11 @@
         <div class="mx-4">
             <p><span class="subtitle is-5">Difficulty: </span>{{clip.difficulty}}</p>
             <p><span class="subtitle is-5">Created at: </span>{{clip.created_at|date:"Y-m-d H:i"}}</p>
-            <p><span class="subtitle is-5">Tags: </span>{{clip.tags}}</p>
+            <p><span class="subtitle is-5">Tags: </span>
+                {% for tag in clip.tags.all %}
+                <span>{{tag.name}}</span>
+                {%endfor%}
+                </p>
         </div>
     </div>
     <div>

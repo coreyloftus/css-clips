@@ -18,6 +18,9 @@
                 <p>
                     <span class="subtitle is-5">by: </span><span><a href="/profile/{{clip.owner}}">{{clip.owner}}</a></span>
                 </p>
+                {% for tag in clip.tags.all %}
+                <span>{{tag.name}}</span>
+                {% endfor %}
             </div>
         </div>
     </a>
