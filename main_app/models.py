@@ -1,11 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Tag(models.Model):
     name = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
+
     def __str__(self):
         return self.name
+
 
 class Clip(models.Model):
     title = models.CharField(max_length=300)
@@ -27,5 +30,3 @@ class Clip(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     favorite_clips = models.ForeignKey(Clip, on_delete=models.CASCADE)
-
-

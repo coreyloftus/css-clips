@@ -33,22 +33,6 @@ class About(TemplateView):
 # index route
 
 
-# @method_decorator(login_required, name='dispatch')
-# class AllClips(TemplateView):
-#     template_name = 'all_clips.html'
-
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         title = self.request.GET.get("title")
-#         if title != None:
-#             context['clips'] = User.objects.filter(
-#                 title__icontains=title, user=self.request.user)
-#             context['header'] = f'Searching for {title}'
-#         else:
-#             context['clips'] = Clip.objects.filter(user=self.request.user)
-#             context['header'] = 'Clip Collection Index'
-#         return context
-
 class AllClips(TemplateView):
     template_name = 'all_clips.html'
 
@@ -60,7 +44,7 @@ class AllClips(TemplateView):
             context['header'] = f'Searching for {title}'
         else:
             context['clips'] = Clip.objects.all()
-            context["tags"] = Tag.objects.all()
+            context['tags'] = Tag.objects.all()
             context['header'] = 'Clip Collection Index'
         return context
 
@@ -168,5 +152,21 @@ class Profile(TemplateView):
         return context
 
 
-class ProfileUpdate(Profile, UpdateView):
-    pass
+# class ProfileUpdate(Profile, UpdateView):
+#     pass
+
+class TagDetail(TemplateView):
+    model = Tag
+    template_name = 'tag_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        name = self.request.GET.get("name")
+        if name != None:
+            context['clips'] = Clip.objects.filter(tags__name__icontains=name)
+            print('found tags')
+        else:
+            context['clips'] = None
+            print('no tags found')
+        print(context)
+        return context

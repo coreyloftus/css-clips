@@ -17,7 +17,7 @@
                 <p><span class="subtitle is-5 has-text-white">{{clip}}</span></p>
                 <p><span class="subtitle is-5 has-text-white">by: </span><a href="/profile/{{clip.owner}}">{{clip.owner}}</a></p>
                 {% for tag in clip.tags.all %}
-                <a href="#" class="tag is-dark has-text-white">{{tag}}</a>
+                <a href="/tags/{{tag.name}}" class="tag is-dark has-text-white">{{tag}}</a>
                 {% endfor %}
             </div>
         </div>
