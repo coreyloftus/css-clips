@@ -31,10 +31,6 @@
                 <div class="navbar-start">
                     {% comment %} <a class="navbar-item" href="/"> Home </a> {% endcomment %}
                     {% comment %} <a class="navbar-item" href="/clips"> Clips Index </a> {% endcomment %}
-                    {% if user.is_authenticated %}
-                    <a class="navbar-item has-text-white" href="/clips/new"> Create Clip </a>
-                    {% endif %}
-                    <a class="navbar-item has-text-white" href="/about"> About </a>
                     <!-- <div class="navbar-item has-dropdown is-hoverable">
                         <a class="navbar-link"> More </a> -->
 
@@ -47,32 +43,40 @@
                         </div> -->
                     </div>
                 </div>
-
                 <div class="navbar-end">
+                    <div class="navbar-item">
+                        <a class="navbar-item has-text-white is-info button" href="/about"> About </a>
+                    </div>
+                    {% if user.is_authenticated %}
+                    <div class="navbar-item">
+                        <a class="navbar-item has-text-white is-link button" href="/clips/new"> Create Clip </a>
+                    </div>
+                    {% endif %}
                     <div class="navbar-item">
                         <div class="buttons">
                             {% if user.is_authenticated %}
                             <div class="dropdown is-hoverable">
                                 <div class="dropdown-trigger">
-                                    <button class="button has-text-white is-success" aria-haspopup="true" aria-controls="dropdown-menu">
+                                    <a href="/profile/{{user.username}}" class="button has-text-white is-success" aria-haspopup="true" aria-controls="dropdown-menu">
                                         <span>{{user.username}}</span>
                                         <span class="icon is-small">
                                             <i class="fas fa-angle-down" aria-hidden="true"></i>
                                         </span>
-                                    </button>
+                                    </a>
                                 </div>
                                 <div class="dropdown-menu" id="dropdown-menu" role="menu">
                                     <div class="dropdown-content">
                                         <div class="dropdown-item">
                                             <a href="/profile/{{user.username}}">
-                                                Profile
+                                                Collection
                                             </a>
                                         </div>
                                         <div class="dropdown-item">
-                                            <a href="{% url 'clip_create' %}">
-                                                Create Clip
+                                            <a href="/profile/{{user.username}}">
+                                                Favorites
                                             </a>
                                         </div>
+                                        <hr class="dropdown-divider">
                                         <div class="dropdown-item">
                                             <a href="{% url 'logout' %}">
                                                 Sign Out
