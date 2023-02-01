@@ -159,11 +159,16 @@ class TagDetail(TemplateView):
     model = Tag
     template_name = 'tag_detail.html'
 
+    def list_posts_by_tag(request, tag_id):
+        tag = get_object_or_404(Tag, id=tag_id)
+        posts = Post.objects.filter(status="published", tags=tag)
+        context = {}
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         name = self.request.GET.get("name")
         if name != None:
-            context['clips'] = Clip.objects.filter(tags__name__icontains=name)
+            context['clips'] = Clip.objects.filter(tags__name=name)
             print('found tags')
         else:
             context['clips'] = None

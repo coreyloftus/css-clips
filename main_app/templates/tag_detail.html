@@ -5,7 +5,7 @@
     <a href="{% url 'clip_detail' clip.pk %}">
         <div class="column">
             <div class="">
-                <p class="title is-4 has-text-white">{{clip}}</p>
+                <p class="title is-4 has-text-white">{{clip.name}}</p>
             </div>
             <div class="" style="">
                 <div class="is-clipped" style="width: 300px; height: 300px; border: 10px ridge rgba(255, 255, 50, 0.95)">
@@ -21,8 +21,8 @@
                 <a href="#" class="tag is-dark has-text-white">{{tag}}</a>
                 {% endfor %}
             </div>
-        </div></a
-    >
+        </div>
+    </a>
     {% empty %}
     <article class="message">
         <div class="message-header is-warning">
