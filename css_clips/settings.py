@@ -118,3 +118,5 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'main_app/static')]
 STATIC_ROOT = os.path.join('static')
 LOGIN_REDIRECT_URL = '/clips/'
 LOGOUT_REDIRECT_URL = '/clips'
+import django_heroku
+django_heroku.settings(locals())
