@@ -21,28 +21,17 @@ from django.views.generic.detail import DetailView, SingleObjectMixin
 class Home(TemplateView):
     template_name = 'home.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["tags"] = Tag.objects.all()
+        return context
+
 
 class About(TemplateView):
     template_name = 'about.html'
 
 # index route
 
-
-# @method_decorator(login_required, name='dispatch')
-# class AllClips(TemplateView):
-#     template_name = 'all_clips.html'
-
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         title = self.request.GET.get("title")
-#         if title != None:
-#             context['clips'] = User.objects.filter(
-#                 title__icontains=title, user=self.request.user)
-#             context['header'] = f'Searching for {title}'
-#         else:
-#             context['clips'] = Clip.objects.filter(user=self.request.user)
-#             context['header'] = 'Clip Collection Index'
-#         return context
 
 class AllClips(TemplateView):
     template_name = 'all_clips.html'
@@ -55,6 +44,7 @@ class AllClips(TemplateView):
             context['header'] = f'Searching for {title}'
         else:
             context['clips'] = Clip.objects.all()
+            context['tags'] = Tag.objects.all()
             context['header'] = 'Clip Collection Index'
         return context
 
@@ -65,9 +55,10 @@ class ClipDetail(DetailView):
     model = Clip
     template_name = 'clip_detail.html'
 
-    def detail_view(request, item_id):
-        clip = Clip.objects.get(id=item_id)
-        return render(request, 'clip_live.html', {'clip': clip})
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        print(context)
+        return context
 
 # create route
 
@@ -76,7 +67,7 @@ class ClipCreate(LoginRequiredMixin, CreateView):
     login_url = '/login/'
     redirect_field_name = 'redirect_to'
     model = Clip
-    fields = ['title', 'html', 'css', 'difficulty']
+    fields = ['title', 'html', 'css', 'difficulty', 'tags']
     template_name = 'clip_create.html'
     # success_url = '/clips/'
 
@@ -102,7 +93,7 @@ class ClipDelete(DeleteView):
 @method_decorator(login_required, name='dispatch')
 class ClipUpdate(UpdateView):
     model = Clip
-    fields = ['title', 'html', 'css', 'difficulty']
+    fields = ['title', 'html', 'css', 'difficulty', 'tags']
     template_name = 'clip_update.html'
 
     def get_success_url(self):
@@ -161,5 +152,26 @@ class Profile(TemplateView):
         return context
 
 
-class ProfileUpdate(Profile, UpdateView):
-    pass
+# class ProfileUpdate(Profile, UpdateView):
+#     pass
+
+class TagDetail(TemplateView):
+    model = Tag
+    template_name = 'tag_detail.html'
+
+    def list_posts_by_tag(request, tag_id):
+        tag = get_object_or_404(Tag, id=tag_id)
+        posts = Post.objects.filter(status="published", tags=tag)
+        context = {}
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        name = self.request.GET.get("name")
+        if name != None:
+            context['clips'] = Clip.objects.filter(tags__name=name)
+            print('found tags')
+        else:
+            context['clips'] = None
+            print('no tags found')
+        print(context)
+        return context

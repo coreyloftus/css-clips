@@ -13,4 +13,5 @@ urlpatterns = [
     path('clips/<int:pk>/update', views.ClipUpdate.as_view(), name="clip_update"),
     path('accounts/signup/', views.SignUp.as_view(), name="signup"),
     path('profile/<str:username>', views.Profile.as_view(), name="profile"),
+    path('tags/<str:name>', views.TagDetail.as_view(), name="tag_detail")
 ]

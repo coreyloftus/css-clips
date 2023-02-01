@@ -18,7 +18,7 @@
     </div>
         {% endif %}
     <div class="is-flex is-flex-direction-row is-justify-content-space-evenly is-align-items-center">
-        <div style="border:2px ridge yellow;">
+        <div style="border: 10px ridge rgba(255, 255, 50, 0.95)">
             <div style="width:300px; height:300px;">
                 {{clip.html | safe}}<style media="screen">{{clip.css | safe}}</style>
             </div>
@@ -26,7 +26,11 @@
         <div class="mx-4">
             <p><span class="subtitle is-5">Difficulty: </span>{{clip.difficulty}}</p>
             <p><span class="subtitle is-5">Created at: </span>{{clip.created_at|date:"Y-m-d H:i"}}</p>
-            <p><span class="subtitle is-5">Tags: </span>{{clip.tags}}</p>
+            <p><span class="subtitle is-5">Tags: </span>
+                {% for tag in clip.tags.all %}
+                <a href="#" class="tag is-warning">{{tag}}</a>
+                {%endfor%}
+                </p>
         </div>
     </div>
     <div>

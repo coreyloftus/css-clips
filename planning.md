@@ -53,23 +53,34 @@ My user is someone who wants to discover, create, share small CSS animations. Fo
 
 ### Day 2
 
--   Generate seed data,
--   seed DB
+-   Generate seed data
+-   seed DB (moved to day 5)
 -   add auth to site
 
 ### Day 3
 
--   add env control for Django
--   Deploy SQL db, integrate with frontend
--   Add Tags to Clips(AKA user posts)
+-   Add Tags to Clips (AKA user posts)
 
 ### Day 4
 
+-   add env control for Django
+-   Deploy SQL db, integrate with frontend
+-   Add comments throughout code
+-   Get Tags to filter correctly in Tag Detail route
+-   Style all Forms
+    -   Sign Up
+    -   Create Clip
+        -   change Tags field into clickable boxes
+    -   Update Clip
+        -   change Tags field into clickable boxes
 -   Styling, bug squashing
 
 ### Day 5
 
 -   Deploy, additional styling, stretch goals
+-   Generate Clips for the DB
+    -   include as file in repo for people who Fork to quick seed the db for testing
+-   Add deployed site to Personal Portfolio
 
 ## Initial Wireframes
 
