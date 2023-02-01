@@ -109,7 +109,7 @@ class ClipDelete(DeleteView):
 @method_decorator(login_required, name='dispatch')
 class ClipUpdate(UpdateView):
     model = Clip
-    fields = ['title', 'html', 'css', 'difficulty']
+    fields = ['title', 'html', 'css', 'difficulty', 'tags']
     template_name = 'clip_update.html'
 
     def get_success_url(self):

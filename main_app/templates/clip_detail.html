@@ -28,7 +28,7 @@
             <p><span class="subtitle is-5">Created at: </span>{{clip.created_at|date:"Y-m-d H:i"}}</p>
             <p><span class="subtitle is-5">Tags: </span>
                 {% for tag in clip.tags.all %}
-                <span>{{tag.name}}</span>
+                <a href="#" class="tag is-warning">{{tag}}</a>
                 {%endfor%}
                 </p>
         </div>

@@ -19,7 +19,7 @@
                     <span class="subtitle is-5">by: </span><span><a href="/profile/{{clip.owner}}">{{clip.owner}}</a></span>
                 </p>
                 {% for tag in clip.tags.all %}
-                <span>{{tag.name}}</span>
+                <a href="#" class="tag is-warning">{{tag.name}}</a>
                 {% endfor %}
             </div>
         </div>
