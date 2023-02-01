@@ -3,8 +3,15 @@ from django.urls import path, include
 from django.contrib.auth.decorators import login_required, permission_required
 from . import views
 
+# add error routing in views.py
+# from django.conf.urls import (handler400, handler403, handler404, handler500)
+# handler400 = 'my_app.views.bad_request'
+# handler403 = 'my_app.views.permission_denied'
+# handler404 = 'my_app.views.page_not_found'
+# handler500 = 'my_app.views.server_error'
+
 urlpatterns = [
-    path('', views.Home.as_view(), name='home'),
+    path('', views.AllClips.as_view(), name="all_clips"),
     path('about/', views.About.as_view(), name='about'),
     path('clips/', views.AllClips.as_view(), name="all_clips"),
     path('clips/new', views.ClipCreate.as_view(), name="clip_create"),
