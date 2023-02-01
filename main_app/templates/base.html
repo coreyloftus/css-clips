@@ -7,17 +7,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico'%}"/>
         <link rel="stylesheet" href="{% static 'styles/main.css' %}"/>
         <script src="{%static 'scripts/main.js'%}" defer></script>
         <title>CSS Clips {%block title%}{%endblock%}</title>
     </head>
     <body>
-        <nav class="navbar" role="navigation" aria-label="main navigation">
+        <nav class="navbar has-background-black" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
-                <h1 class="is-2 has-text-weight-bold">CSS CLIPS</h1>
-                <!-- <a class="navbar-item" href="https://bulma.io">
-                <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-              </a> -->
+                {% comment %} <a href="/clips"><h1 class="is-2 has-text-weight-bold">CSS CLIPS</h1></a> {% endcomment %}
+                <a class="navbar-item" href="/clips">
+                <img src="{% static './assets/images/css-clips-long-logo.png'%}" height="32" width="112">
+              </a>
 
                 <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
                     <span aria-hidden="true"></span>
@@ -28,12 +29,12 @@
 
             <div id="navbarBasicExample" class="navbar-menu">
                 <div class="navbar-start">
-                    <a class="navbar-item" href="/"> Home </a>
-                    <a class="navbar-item" href="/about"> About </a>
-                    <a class="navbar-item" href="/clips"> Clips Index </a>
+                    {% comment %} <a class="navbar-item" href="/"> Home </a> {% endcomment %}
+                    {% comment %} <a class="navbar-item" href="/clips"> Clips Index </a> {% endcomment %}
                     {% if user.is_authenticated %}
-                    <a class="navbar-item" href="/clips/new"> Create Clip </a>
+                    <a class="navbar-item has-text-white" href="/clips/new"> Create Clip </a>
                     {% endif %}
+                    <a class="navbar-item has-text-white" href="/about"> About </a>
                     <!-- <div class="navbar-item has-dropdown is-hoverable">
                         <a class="navbar-link"> More </a> -->
 
@@ -51,8 +52,7 @@
                     <div class="navbar-item">
                         <div class="buttons">
                             {% if user.is_authenticated %}
-                            <span class="navbar-item">username: <a href="/profile/{{user.username}}"> {{user.username}}</a></span>
-                            <a class="button is-light" href="{% url 'logout'%}"> Log Out </a>
+                            <a class="button has-text-white is-success" href="/profile/{{user.username}}"> {{user.username}}</a>
                             {% else %}
                             <a class="button is-light" href="{% url 'login'%}"> Log in </a>
                             <a class="button is-primary" href="{% url 'signup'%}"> Sign Up </a>

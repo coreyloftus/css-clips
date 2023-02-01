@@ -4,22 +4,22 @@
     <a href="{% url 'clip_detail' clip.pk %}">
         <div class="column">
             <div class="">
-                <p class="title is-4">{{clip.title}}</p>
+                <p class="title is-4">{{clip}}</p>
             </div>
             <div class="" style="">
-                <div class="is-clipped" style="width: 305px; height: 305px; border: 5px ridge rgba(211, 220, 50, 0.6)">
+                <div class="is-clipped" style="width: 305px; height: 310px; border: 10px ridge rgba(211, 220, 50, 0.6)">
                     {{clip.html | safe}}<style media="screen">
                         {{clip.css | safe}}
                     </style>
                 </div>
             </div>
             <div class="">
-                <p><span class="subtitle is-5">{{clip.title}}</span></p>
+                <p><span class="subtitle is-5">{{clip}}</span></p>
                 <p>
                     <span class="subtitle is-5">by: </span><span><a href="/profile/{{clip.owner}}">{{clip.owner}}</a></span>
                 </p>
                 {% for tag in clip.tags.all %}
-                <a href="#" class="tag is-warning">{{tag.name}}</a>
+                <a href="#" class="tag is-warning">{{tag}}</a>
                 {% endfor %}
             </div>
         </div>

@@ -1,34 +1,45 @@
 {% extends 'base.html' %} {% block content %}
-<div>
-    <p>username: {{user_data.username}}</p>
-    <p>email: {{user_data.email}}</p>
-    <p>first_name: {{user_data.first_name}}</p>
-    <p>last_name: {{user_data.last_name}}</p>
-</div>
-{% for clip in clips %} {% if clip.owner_id == user.pk %}
-<a href="{% url 'clip_detail' clip.pk %}">
-    <div class="card">
-        <div class="card-header">
-            <p class="title is-4">{{clip.title}}</p>
-        </div>
-        <div class="card-image" style="">
-            <div class="is-clipped" style="width: 305px; height: 305px; border: 5px ridge rgba(211, 220, 50, 0.6)">
-                {{clip.html | safe}}<style media="screen">
-                    {{clip.css | safe}}
-                </style>
+<div class="columns is-multiline mt-4">
+    <div class="column is-one-quarter">
+        <div class="card py-2 px-2">
+            <div class="card-header">
+                <p class="ml-4">{{user_data.username}}</p>
             </div>
-            <div class="card-content px-4"></div>
-            <p><span class="subtitle is-5">Title: </span>{{clip.title}}</p>
-            <p><span class="subtitle is-5">Difficulty: </span>{{clip.difficulty}}</p>
-            <p><span class="subtitle is-5">Created at: </span>{{clip.created_at|date:"Y-m-d H:i"}}</p>
-            <p><span class="subtitle is-5">Made by: </span>{{clip.owner}}</p>
+            <div class="card-content">
+                <p>{{user_data.email}}</p>
+                <p>{{user_data.first_name}} {{user_data.last_name}}</p>
+                <p>? clips created</p>
+            </div>
+            <a class="button is-warning ml-4" href="{% url 'logout'%}"> Log Out </a>
         </div>
     </div>
-</a>
-{% endif %} {% empty %}
-<article class="message">
-    <div class="message-header is-warning">
-        <p class="is-warning">No clips in index</p>
+    <div class="column">
+        {% for clip in clips %} {% if clip.owner_id == user.pk %}
+        <a href="{% url 'clip_detail' clip.pk %}">
+            <div class="card">
+                <div class="card-header">
+                    <p class="title is-4">{{clip.title}}</p>
+                </div>
+                <div class="card-image" style="">
+                    <div class="is-clipped" style="width: 305px; height: 305px; border: 5px ridge rgba(211, 220, 50, 0.6)">
+                        {{clip.html | safe}}<style media="screen">
+                            {{clip.css | safe}}
+                        </style>
+                    </div>
+                    <div class="card-content px-4"></div>
+                    <p><span class="subtitle is-5">Title: </span>{{clip.title}}</p>
+                    <p><span class="subtitle is-5">Difficulty: </span>{{clip.difficulty}}</p>
+                    <p><span class="subtitle is-5">Created at: </span>{{clip.created_at|date:"Y-m-d H:i"}}</p>
+                    <p><span class="subtitle is-5">Made by: </span>{{clip.owner}}</p>
+                </div>
+            </div>
+        </a>
+        {% endif %} {% empty %}
+        <article class="message">
+            <div class="message-header is-warning">
+                <p class="is-warning">No clips in index</p>
+            </div>
+        </article>
     </div>
-</article>
+</div>
 {% endfor %} {% endblock content %}

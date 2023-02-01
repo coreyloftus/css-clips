@@ -117,4 +117,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'main_app/static')]
 STATIC_ROOT = os.path.join('static')
 LOGIN_REDIRECT_URL = '/clips/'
-LOGOUT_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/clips'
