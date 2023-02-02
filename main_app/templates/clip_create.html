@@ -1,7 +1,12 @@
 {%extends 'base.html'%} {% block title %} Create a Clip {%endblock%} {% block content %}
 <h1>Create a Clip</h1>
 <form method="post">
-    {%csrf_token%} {{form.as_p}}
-    <input type="submit" value="Submit" />
+    {% comment %} use Django's form validation + standard form {% endcomment %} {%csrf_token%} {{form.as_p}}
+    <div class="py-4">
+        {% comment %} submit button {% endcomment %}
+        <input type="submit" class="button is-success" value="Submit" />
+        {% comment %} cancel button redirects back to index page {% endcomment %}
+        <a class="button is-light" href="{% url 'all_clips' %}">Cancel</a>
+    </div>
 </form>
 {% endblock %}

@@ -1,9 +1,14 @@
-{% extends 'base.html' %}
-{% block content %}
-<h1>Update Clip</h1>
-<form action="" method="post">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Submit"/>
-</form>
+{% extends 'base.html' %} {% block content %}
+<h1 class="has-text-white">Update Clip</h1>
+<div class="px-4">
+    <form action="" method="post" class="has-text-white">
+        {% csrf_token %} {{form.as_p}}
+        <div class="py-4">
+            {% comment %} submit button {% endcomment %}
+            <input type="submit" class="button is-success" value="Submit" />
+            {% comment %} cancel button redirects back to same clip's detail page {% endcomment %}
+            <a class="button is-light" href="{% url 'clip_detail' clip.pk %}">Cancel</a>
+        </div>
+    </form>
+</div>
 {% endblock content %}
