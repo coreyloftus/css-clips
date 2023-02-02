@@ -1,6 +1,6 @@
 from .models import *
 
-from django.shortcuts import redirect, render, render_to_response
+from django.shortcuts import redirect, render
 from django.template import RequestContext
 
 from django.http import HttpResponse

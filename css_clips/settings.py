@@ -1,7 +1,8 @@
+import django_heroku
 from pathlib import Path
 import os
-from dotenv import load_dotenv
-load_dotenv()
+from decouple import config
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -10,7 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-%w(yap$8z#*wt*-p$(eqfge5(w%5r$71r4$#1rf&qalxr$v7k#'
+SECRET_KEY = config('SECRET_KEY')
 # SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'DEFAULT_KEY')
 
 
@@ -118,5 +119,4 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'main_app/static')]
 STATIC_ROOT = os.path.join('static')
 LOGIN_REDIRECT_URL = '/clips/'
 LOGOUT_REDIRECT_URL = '/clips'
-import django_heroku
 django_heroku.settings(locals())
