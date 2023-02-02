@@ -1,6 +1,7 @@
 from .models import *
 
 from django.shortcuts import redirect, render
+from django.template import RequestContext
 
 from django.http import HttpResponse
 from django.urls import reverse_lazy, reverse
@@ -15,7 +16,18 @@ from django.views import View
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.detail import DetailView, SingleObjectMixin
+
 # Create your views here.
+
+# Error Routes
+
+
+def bad_request(request):
+    # HTTP Error 400 Route
+    response = render_to_response(
+        'error.html', context_instance=RequestContext(request))
+    response.status_code = 400
+    return response
 
 
 class Home(TemplateView):
@@ -138,6 +150,11 @@ class Profile(TemplateView):
     # Render the template with the user data
         return render(request, 'profile.html', {'user_data': user_data})
 
+    def num_clip(request):
+        num_clip = Clip.objects.filter(owner=request.user_id).count()
+        print(num_clip)
+        return render(request, 'profile.html', {'num_clip': num_clip})
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         title = self.request.GET.get("title")
@@ -152,17 +169,14 @@ class Profile(TemplateView):
         return context
 
 
-# class ProfileUpdate(Profile, UpdateView):
-#     pass
-
 class TagDetail(TemplateView):
     model = Tag
     template_name = 'tag_detail.html'
 
-    def list_posts_by_tag(request, tag_id):
-        tag = get_object_or_404(Tag, id=tag_id)
-        posts = Post.objects.filter(status="published", tags=tag)
-        context = {}
+    # def list_posts_by_tag(request, tag_id):
+    #     tag = get_object_or_404(Tag, id=tag_id)
+    #     posts = Post.objects.filter(status="published", tags=tag)
+    #     context = {}
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
