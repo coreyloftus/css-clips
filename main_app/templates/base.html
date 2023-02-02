@@ -1,4 +1,5 @@
 {%load static%}
+{% load widget_tweaks %} 
 <!DOCTYPE html>
 <html lang="en" class="has-background-black">
     <head>
@@ -6,20 +7,22 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css" />
+        {% comment %} load Bulma CSS {% endcomment %}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        {% comment %} load Font-Awesome Icons {% endcomment %}
         <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico'%}"/>
         <link rel="stylesheet" href="{% static 'styles/main.css' %}"/>
         <script src="{%static 'scripts/main.js'%}" defer></script>
         <title>CSS Clips {%block title%}{%endblock%}</title>
     </head>
     <body>
+        {% comment %} navbar {% endcomment %}
         <nav class="navbar has-background-black" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
-                {% comment %} <a href="/clips"><h1 class="is-2 has-text-weight-bold">CSS CLIPS</h1></a> {% endcomment %}
                 <a class="navbar-item" href="/clips">
                 <img src="{% static './assets/images/css-clips-long-logo.png'%}" height="32" width="112">
               </a>
-
+                {% comment %} HTML for Bulma's mobile navbar {% endcomment %}
                 <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
@@ -29,25 +32,16 @@
 
             <div id="navbarBasicExample" class="navbar-menu">
                 <div class="navbar-start">
-                    {% comment %} <a class="navbar-item" href="/"> Home </a> {% endcomment %}
-                    {% comment %} <a class="navbar-item" href="/clips"> Clips Index </a> {% endcomment %}
-                    <!-- <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link"> More </a> -->
-
-                        <!-- <div class="navbar-dropdown">
-                            <a class="navbar-item"> About </a>
-                            <a class="navbar-item"> Jobs </a>
-                            <a class="navbar-item"> Contact </a>
-                            <hr class="navbar-divider" />
-                            <a class="navbar-item"> Report an issue </a>
-                        </div> -->
-                    </div>
+                    {% comment %} navbar left-aligned items {% endcomment %}
                 </div>
+            </div>
                 <div class="navbar-end">
+                    {% comment %} navbar right aligned items {% endcomment %}
                     <div class="navbar-item">
                         <a class="navbar-item has-text-white is-info button" href="/about"> About </a>
                     </div>
                     {% if user.is_authenticated %}
+                    {% comment %} only display if user is logged in {% endcomment %}
                     <div class="navbar-item">
                         <a class="navbar-item has-text-white is-link button" href="/clips/new"> Create Clip </a>
                     </div>
@@ -55,6 +49,7 @@
                     <div class="navbar-item">
                         <div class="buttons">
                             {% if user.is_authenticated %}
+                            {% comment %} only display if user is logged in {% endcomment %}
                             <div class="dropdown is-hoverable">
                                 <div class="dropdown-trigger">
                                     <a href="/profile/{{user.username}}" class="button has-text-white is-success" aria-haspopup="true" aria-controls="dropdown-menu">
@@ -71,11 +66,12 @@
                                                 Collection
                                             </a>
                                         </div>
-                                        <div class="dropdown-item">
+                                        {% comment %} commented out until feature route is built {% endcomment %}
+                                        {% comment %} <div class="dropdown-item">
                                             <a href="/profile/{{user.username}}">
                                                 Favorites
                                             </a>
-                                        </div>
+                                        </div> {% endcomment %}
                                         <hr class="dropdown-divider">
                                         <div class="dropdown-item">
                                             <a href="{% url 'logout' %}">
@@ -86,6 +82,7 @@
                                 </div>    
                             </div>
                             {% else %}
+                            {% comment %} if user is not logged in, display this {% endcomment %}
                             <a class="button is-light" href="{% url 'login'%}"> Log in </a>
                             <a class="button is-primary" href="{% url 'signup'%}"> Sign Up </a>
                             {% endif %}
@@ -95,6 +92,7 @@
             </div>
         </nav>
         <div class="mgb-4">
+            {% comment %} add margin to the bottom of every element displayed {% endcomment %}
             {% block content %} {% endblock %}
         </div>
     </body>

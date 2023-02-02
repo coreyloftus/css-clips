@@ -77,7 +77,8 @@ My user is someone who wants to discover, create, share small CSS animations. Fo
 
 ### Day 5
 
--   additional styling, stretch goals
+-   mobile styling
+-   search bar
 -   Generate Clips for the DB
     -   include as file in repo for people who Fork to quick seed the db for testing
 -   Add deployed site to Personal Portfolio
