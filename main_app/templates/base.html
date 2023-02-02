@@ -65,11 +65,12 @@
                                                 Collection
                                             </a>
                                         </div>
-                                        <div class="dropdown-item">
+                                        {% comment %} commented out until feature route is built {% endcomment %}
+                                        {% comment %} <div class="dropdown-item">
                                             <a href="/profile/{{user.username}}">
                                                 Favorites
                                             </a>
-                                        </div>
+                                        </div> {% endcomment %}
                                         <hr class="dropdown-divider">
                                         <div class="dropdown-item">
                                             <a href="{% url 'logout' %}">
