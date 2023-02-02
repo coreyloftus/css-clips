@@ -66,7 +66,7 @@ Many thanks to for all coders who have come before, and made this tech stack pos
 
 ## Future Updates
 
--   [ ] Future Update 1
+-   [ ] Add "Favorite" functionality -- user can add a clip to their favorites, view favorites on their profile or via link on navbar dropdown (visible while logged in)
 
 ## Author
 

@@ -149,20 +149,15 @@ class Profile(TemplateView):
 class TagDetail(TemplateView):
     model = Tag
     template_name = 'tag_detail.html'
-
-    # def list_posts_by_tag(request, tag_id):
-    #     tag = get_object_or_404(Tag, id=tag_id)
-    #     posts = Post.objects.filter(status="published", tags=tag)
-    #     context = {}
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        name = self.request.GET.get("name")
-        if name != None:
-            context['clips'] = Clip.objects.filter(tags__name=name)
-            print('found tags')
-        else:
-            context['clips'] = None
-            print('no tags found')
-        print(context)
+        # pull tag's name out of the kwargs
+        name = kwargs.get("name")
+        try:
+            tag_data = Tag.objects.get(name=name)
+            clip_data = Clip.objects.filter(tags=tag_data.id)
+            context['tag_data'] = tag_data
+            context['clip_data'] = clip_data
+        except Tag.DoesNotExist:
+            context['error_message'] = 'Tag not found'
         return context
