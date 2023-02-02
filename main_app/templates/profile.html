@@ -1,5 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 <div class="mt-4">
+    {% comment %} card displaying info of whoever's profile is being viewed {% endcomment %}
     <div class="column is-one-quarter">
         <div class="card py-2 px-2">
             <div class="card-header">
@@ -14,6 +15,7 @@
         </div>
     </div>
     <div class="columns is-multiline">
+        {% comment %} display of user's created clips {% endcomment %}
         {% for clip in user_clips %} {% if clip.owner_id == user.pk %}
         <div class="column">
             <a href="{% url 'clip_detail' clip.pk %}">
@@ -36,6 +38,7 @@
                 </div>
             </a>
             {% endif %} {% empty %}
+            {% comment %} if no clips are found, this displays {% endcomment %}
             <article class="message">
                 <div class="message-header is-warning">
                     <p class="is-warning">No clips in index</p>
