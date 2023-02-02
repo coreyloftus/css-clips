@@ -1,7 +1,8 @@
 {%extends 'base.html'%} {% block title %} Create a Clip {%endblock%} {% block content %}
 <h1>Create a Clip</h1>
 <form method="post">
-    {% comment %} use Django's form validation + standard form {% endcomment %} {%csrf_token%} {{form.as_p}}
+    {% comment %} use Django's form validation + standard form {% endcomment %} 
+    {%csrf_token%} {{form.as_p}}
     <div class="py-4">
         {% comment %} submit button {% endcomment %}
         <input type="submit" class="button is-success" value="Submit" />

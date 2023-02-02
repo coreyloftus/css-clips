@@ -10,6 +10,7 @@ django-heroku = "*"
 gunicorn = "*"
 whitenoise = "*"
 python-decouple = "*"
+django-widget-tweaks = "*"
 
 [dev-packages]
 
