@@ -19,13 +19,12 @@ from django.views.generic.detail import DetailView, SingleObjectMixin
 
 # Error Routes
 
-
-def bad_request(request):
-    # HTTP Error 400 Route
-    response = render_to_response(
-        'error.html', context_instance=RequestContext(request))
-    response.status_code = 400
-    return response
+# def bad_request(request):
+#     # HTTP Error 400 Route
+#     response = render_to_response(
+#         'error.html', context_instance=RequestContext(request))
+#     response.status_code = 400
+#     return response
 
 
 class About(TemplateView):
@@ -35,6 +34,7 @@ class About(TemplateView):
 
 
 class AllClips(TemplateView):
+    # home route / landing page
     # index route
     template_name = 'all_clips.html'
 
@@ -52,6 +52,7 @@ class AllClips(TemplateView):
 
 
 class ClipDetail(DetailView):
+    # clips/<clip.pk>
     # show / detail route for each Clip
     model = Clip
     template_name = 'clip_detail.html'
@@ -126,57 +127,23 @@ class SignUp(View):
 
 
 class Profile(TemplateView):
+    # profile/<username>
+    # route to view any user's profile
     model = Profile
-    # get user profile data based on username param
 
     def get(self, request, username):
         try:
-            user = User.objects.get(username=username)
-            print(user)
-            user_clips = []
-            clips = Clip.objects.filter(owner=user.id)
-            for clip in clips:
-                print(clip)
-                user_clip = {
-                    'title': clip.title,
-                    'html': clip.html,
-                    'css': clip.css,
-                    'difficulty': clip.difficulty,
-                    'created_at': clip.created_at,
-                    'tags': clip.tags
-                }
-                user_clips.append(user_clip)
-
-            # pass user data to template
-            user_data = {
-                'username': user.username,
-                'email': user.email,
-                'first_name': user.first_name,
-                'last_name': user.last_name
-            }
+            user_data = User.objects.get(username=username)
+            # get user data where username matches "username" param
+            user_clips = Clip.objects.filter(owner=user_data.id)
+            # get clips from db that are owned by that user
+            print(user_data)
+            print(user_clips)
         except User.DoesNotExist:
             return render(request, 'error.html', {'error_message': 'User not found'})
 
     # Render the template with the user data
         return render(request, 'profile.html', {'user_data': user_data, 'user_clips': user_clips})
-
-    def num_clip(request):
-        num_clip = Clip.objects.filter(owner=request.user_id).count()
-        print(num_clip)
-        return render(request, 'profile.html', {'num_clip': num_clip})
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        title = self.request.GET.get("title")
-        if title != None:
-            context['clips'] = Clip.objects.filter(title__icontains=title)
-            print(context['clips'])
-            context['header'] = f'Searching for {title}'
-        else:
-            context['clips'] = Clip.objects.all()
-            print(context['clips'])
-            context['header'] = 'Clip Collection Index'
-        return context
 
 
 class TagDetail(TemplateView):
