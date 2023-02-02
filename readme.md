@@ -10,7 +10,7 @@ CSS Giphy is an app where users can view a database of user created CSS animatio
 
 -   [Repo](https://github.com/coreyloftus/css-giphy/edit/main/readme.md "Repo")
 
--   [Bugs](https://github.com/coreyloftus/<project-name>/issues "Issues Page")
+-   [Bugs](https://github.com/coreyloftus/css-giphy/issues "Issues Page")
 
 -   [Wireframes](https://www.figma.com/file/g76YgWIyT3rpwRORYhhRxl/CSSclips?node-id=0%3A1&t=CbeFnI6NZkVwaiTI-1 "Figma Wireframes")
 
