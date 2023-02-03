@@ -79,6 +79,14 @@ My user is someone who wants to discover, create, share small CSS animations. Fo
 
 -   mobile styling
 -   search bar
+-   Form styling
+    -   Sign Up
+        -   Create Clip
+            -   change Tags field into clickable boxes
+        -   Update Clip
+            -   change Tags field into clickable boxes
+-   User Profile style
+    -   get posts to appear in similar way to index route
 -   Generate Clips for the DB
     -   include as file in repo for people who Fork to quick seed the db for testing
 -   Add deployed site to Personal Portfolio

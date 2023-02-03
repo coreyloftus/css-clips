@@ -9,42 +9,51 @@
             <div class="card-content">
                 <p>{{user_data.email}}</p>
                 <p>{{user_data.first_name}} {{user_data.last_name}}</p>
-                <p><span class="is-size-3">{{user_clips.count}}</span> clips created</p>
+                <p>
+                    {% if user_clips.count == 1 %}
+                    <span class="is-size-3">{{user_clips.count}}</span> clip created
+                    {% else %}
+                    <span class="is-size-3">{{user_clips.count}}</span> clips created
+                    {% endif %}
+                </p>
             </div>
             <a class="button is-danger ml-4" href="{% url 'logout'%}"> Sign Out </a>
         </div>
     </div>
-    <div class="columns is-multiline">
-        {% comment %} display of user's created clips {% endcomment %}
-        {% for clip in user_clips %} {% if clip.owner_id == user.pk %}
-        <div class="column">
+    <div class="columns is-multiline mt-4 mx-4">
+        {% comment %} display of user's created clips {% endcomment %} {% for clip in user_clips %}
             <a href="{% url 'clip_detail' clip.pk %}">
-                <div class="card">
-                    <div class="card-header">
-                        <p class="title is-4">{{clip.title}}</p>
+                <div class="column">
+                    <div class="">
+                        <p class="title is-4 has-text-white">{{clip.title}}</p>
                     </div>
-                    <div class="card-image" style="">
-                        <div class="is-clipped" style="width: 305px; height: 305px; border: 5px ridge rgba(211, 220, 50, 0.6)">
-                            {{clip.html | safe}}<style media="screen">
+                    <div class="" style="">
+                        {% comment %} picture frame / container div for single clip {% endcomment %}
+                        <div class="is-clipped" style="width: 300px; height: 300px; border: 10px ridge rgba(255, 255, 50, 0.95)">
+                            {% comment %} display clip's user-entered HTML {% endcomment %} {{clip.html | safe}}
+                            <style media="screen">
+                                {% comment %} apply clip's user-entered CSS to clip's HTML {% endcomment %}
                                 {{clip.css | safe}}
                             </style>
                         </div>
-                        <div class="card-content px-4"></div>
-                        <p><span class="subtitle is-5">Title: </span>{{clip.title}}</p>
-                        <p><span class="subtitle is-5">Difficulty: </span>{{clip.difficulty}}</p>
-                        <p><span class="subtitle is-5">Created at: </span>{{clip.created_at|date:"Y-m-d H:i"}}</p>
-                        <p><span class="subtitle is-5">Made by: </span>{{clip.owner}}</p>
+                    </div>
+                    <div class="">
+                        {% comment %} container div for clip's details {% endcomment %}
+                        <p><span class="subtitle is-5 has-text-white">{{clip.title}}</span></p>
+                        <p><span class="subtitle is-5 has-text-white">by: </span><a href="/profile/{{clip.owner}}">{{clip.owner}}</a></p>
+                        {% for tag in clip.tags.all %} {% comment %} display all tags for the clip {% endcomment %}
+                        <a href="/tags/{{tag.name}}" class="tag is-dark has-text-white">{{tag}}</a>
+                        {% endfor %}
                     </div>
                 </div>
             </a>
-            {% endif %} {% empty %}
-            {% comment %} if no clips are found, this displays {% endcomment %}
+            {% empty %} {% comment %} if no clips were found in the db, display this {% endcomment %}
             <article class="message">
                 <div class="message-header is-warning">
                     <p class="is-warning">No clips in index</p>
                 </div>
             </article>
         </div>
-    </div>
+    
 </div>
 {% endfor %} {% endblock content %}
