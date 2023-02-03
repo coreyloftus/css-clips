@@ -1,23 +1,27 @@
 {% extends 'base.html' %} {% load widget_tweaks %} {% block content %}
-<div class="card has-background-black has-text-white px-4">
-    <h1 class="card-title has-text-white is-size-2">Sign Up</h1>
-    <div>
-        <form method="post" action="{% url 'signup' %}">
-            {% csrf_token %} {% for field in form.visible_fields %}
-            <div class="field">
-                <div class="control">
-                    <label class="label has-text-white" for="{{ field.id_for_label }}">{{ field.label }}</label>
-                    {{ field }} {% for error in field.errors %}
-                    <span class="help has-text-red has-text-weight-bold">{{ error }}</span>
-                    {% endfor %}
-                </div>
+<div class="columns is-multiline is-vcentered">
+    <div class="column is-half">
+        <h1 class="has-text-white is-size-2 has-text-centered">Sign Up</h1>
+        <div class="has-background-black has-text-white px-4">
+            <div class="">
+                <form method="post" action="{% url 'signup' %}">
+                    {% csrf_token %} 
+                    {% include './formtemplate.html' with form=form %}
+                    
+                    <div class="control mt-4">
+                        <input type="submit" class="button is-primary" value="Sign Up" />
+                        <input type="hidden" name="next" value="{{next}}" />
+                    </div>
+                </form>
             </div>
-            {% endfor %} {% comment %} {{form.as_p}} {% endcomment %}
-            <div class="control mt-4">
-                <input type="submit" class="button is-primary" value="Sign Up" />
-                <input type="hidden" name="next" value="{{next}}" />
-            </div>
-        </form>
+        </div>
     </div>
+    <div class="column is-half">
+        <div class="has-text-white has-text-centered">
+            <p class="is-size-1">CSS Clips</p>
+            <p>Animate your world</p>
+            <p>Practice vanilla HTML + CSS</p>
+        </div>
+    </div>
+    {% endblock content %}
 </div>
-{% endblock content %}

@@ -1,4 +1,5 @@
 from .models import *
+from .forms import SignUpForm
 
 from django.shortcuts import redirect, render
 from django.template import RequestContext
@@ -109,9 +110,22 @@ class SignUp(View):
     # User Sign Up route
     # takes New User to sign up form page
     def get(self, request):
-        form = UserCreationForm()
+        form = SignUpForm()
+        form.fields['username'].widget.attrs.update({
+            'placeholder':'Username'
+        })
+        form.fields['email'].widget.attrs.update({
+            'placeholder':'Email'
+        })
+        form.fields['password'].widget.attrs.update({
+            'placeholder':'Password'
+        })
+        form.fields['password_validate'].widget.attrs.update({
+            'placeholder':'Confirm your password'
+        })
         context = {"form": form}
         return render(request, "registration/signup.html", context)
+
 
     # validates and submits the form
     # redirects User to the Clips Index page, with them signed in
