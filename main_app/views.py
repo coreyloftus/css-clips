@@ -1,5 +1,5 @@
 from .models import *
-from .forms import SignUpForm
+from .forms import *
 
 from django.shortcuts import redirect, render
 from django.template import RequestContext
@@ -69,7 +69,7 @@ class ClipCreate(LoginRequiredMixin, CreateView):
     login_url = '/login/'
     redirect_field_name = 'redirect_to'
     model = Clip
-    fields = ['title', 'html', 'css', 'difficulty', 'tags']
+    fields = ['title', 'html', 'css', 'tags']
     template_name = 'clip_create.html'
 
 # validates form being submitted
@@ -98,13 +98,24 @@ class ClipUpdate(UpdateView):
     # accessible via delete button on Clip Detail page
     # (only visible if user is authenticated / owner of that clip)
     model = Clip
-    fields = ['title', 'html', 'css', 'difficulty', 'tags']
+    fields = ['title', 'html', 'css', 'tags']
     template_name = 'clip_update.html'
-
+    
     def get_success_url(self):
         # returns user to the Clip's detail page w/ the updated info
         return reverse_lazy('clip_detail', kwargs={'pk': self.object.pk})
 
+class LogIn(View):
+    def get(self,request):
+        form = LogInForm()
+        form.fields['username'].widget.attrs.update({
+            'placeholder':'Username'
+        })
+        form.fields['password'].widget.attrs.update({
+            'placeholder':'Password'
+        })
+        context = {"form": form}
+        return render(request, "registration/login.html", context)
 
 class SignUp(View):
     # User Sign Up route

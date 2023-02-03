@@ -16,12 +16,18 @@ class SignUpForm(forms.Form):
     agree = forms.BooleanField(
         required=True,
     )
+class LogInForm(forms.Form):
+    username = forms.CharField(
+        required=True,
+    )
+    password = forms.CharField(
+        required=True,
+    )
 
 
 class ClipCreateForm(forms.Form):
     title = forms.CharField(
         required=True,
-        initial='Username'
     )
     html= forms.CharField(
         widget=forms.Textarea(attrs={'rows':10}),

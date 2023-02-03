@@ -10,19 +10,30 @@
 </div>
 {% endif %}
 {% for field in form.visible_fields %}
-<div class="field block">
-    {{ field.label_tag }} 
+<div class="field is-large">
     {% if form.is_bound %} 
-    {% if field.errors %} 
-    {% render_field field class="control has-text-danger" %} 
-    {% for error in field.errors %}
-    <span class="help has-text-red has-text-weight-bold">{{ error }}</span>
-    {% endfor %} 
+        {% if field.errors %} 
+        <div class="field is-large">
+            <div class="control">
+            {% render_field field %} 
+            </div>
+        </div>
+        {% for error in field.errors %}
+            <span class="help has-text-red has-text-weight-bold">{{ error }}</span>
+        {% endfor %} 
     {% else %} 
-    {% render_field field class="control has-text-primary"%} 
+        <div class="field is-large">
+            <div class="control">
+            {% render_field field %} 
+            </div>
+        </div>
     {% endif %} 
     {% else %} 
-    {% render_field field class="control" %} 
+    <div class="field is-normal">
+        <div class="control">
+        {% render_field field %} 
+        </div>
+    </div>
     {% endif %}
 </div>
 {% endfor %}

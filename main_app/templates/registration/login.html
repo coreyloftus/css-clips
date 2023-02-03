@@ -1,10 +1,14 @@
 {% extends 'base.html' %}{% block content %}
-
-<h1 class="title">Log In</h1>
-<form method="post" action="{% url 'login' %}">
-    {% csrf_token %} {{ form.as_p }}
-    <input type="submit" class="btn" value="login" />
-    <input type="hidden" name="next" value="{{next}}" />
-</form>
-
+<div class="columns is-multiline is-vcentered is-flex">
+    <div class="column is-half">
+        <h1 class="has-text-white is-size-1 has-text-centered is-vcentered">Log in</h1>
+        <div class="has-background-black has-text-white px-4 is-flex is-vcentered">
+            <form method="post" action="{% url 'login' %}">
+                {% csrf_token %} {{ form.as_p }}
+                <input type="submit" class="btn" value="login" />
+                <input type="hidden" name="next" value="{{next}}" />
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}
