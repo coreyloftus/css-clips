@@ -29,7 +29,7 @@ const generateClipView = ({ html, css }) => {
         const blob = new Blob([code], { type })
         return URL.createObjectURL(blob)
     }
-
+    
     const cssURL = getBlobURL(css, "text/css")
 
     const source = `

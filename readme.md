@@ -1,6 +1,6 @@
-# CSS Giphy
+# CSS Clips
 
-CSS Giphy is an app where users can view a database of user created CSS animations in a grid display.
+CSS Clips is an app where users can view a database of user created CSS animations in a grid display.
 
 ## Screenshots
 
