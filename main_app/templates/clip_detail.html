@@ -1,49 +1,67 @@
 {% extends 'base.html' %}{% block title %}{% endblock %} {% block content %}
-<h1><span class="has-text-weight-bold">{{clip.title}}</span> by <span><a href="/profile/{{clip.owner}}">{{clip.owner}}</a></span></h1>
-<div class="py-4">
-    {% if user.is_authenticated and user.id == clip.owner_id %}
-    {% comment %} show edit + delete buttons only if user is logged in AND is clip's owner {% endcomment %}
-    <div class="is-flex is-align-items-center">
-        <div class="buttons mx-4">
-            <a href="{% url 'clip_update' clip.pk %}" class="button is-info">
-                <span class="icon">
-                    <i class="fas fa-edit"></i>
-                </span>
-            </a>
-            <a href="{% url 'clip_delete' clip.pk %}" class="button is-danger">
-                <span class="icon">
-                    <i class="fas fa-trash-alt"></i>
-                </span>
-            </a>
-        </div>
-    </div>
-        {% endif %}
-    <div class="is-flex is-flex-direction-row is-justify-content-space-evenly is-align-items-center">
+<h1 class="has-text-white">Now viewing: <span class="is-size-2 has-text-weight-bold has-text-white">{{clip.title}}</span></h1>
+
+    <div class="py-3 columns is-multiline is-centered">
         {% comment %} clip gold frame div {% endcomment %}
-        <div style="border: 10px ridge rgba(255, 255, 50, 0.95)">
-            {% comment %} clip's div itself {% endcomment %}
-            <div style="width:300px; height:300px; contain:size;">
-                {{clip.html | safe}}<style media="screen">{{clip.css | safe}}</style>
+        <div class="column is-centered">
+
+            <div class= "is-clipped" style="border: 10px ridge rgba(255, 255, 50, 0.95); width:310px; height310px;">
+                {% comment %} clip's div itself {% endcomment %}
+                <div style="width:300px; height:300px; contain:size;">
+                    {{clip.html | safe}}<style media="screen">{{clip.css | safe}}</style>
+                </div>
             </div>
         </div>
-        <div class="mx-4">
+        <div class="column mx-4 has-text-white block">
             {% comment %} clip's details {% endcomment %}
-            <p><span class="subtitle is-5">Difficulty: </span>{{clip.difficulty}}</p>
-            <p><span class="subtitle is-5">Created at: </span>{{clip.created_at|date:"Y-m-d H:i"}}</p>
-            <p><span class="subtitle is-5">Tags: </span>
-                {% for tag in clip.tags.all %}
-                {% comment %} clip's tags {% endcomment %}
-                <a href="#" class="tag is-warning">{{tag}}</a>
-                {%endfor%}
+            <div>
+                <span class="is-size-2 has-text-weight-bold has-text-white">{{clip.title}}</span> by <span><a href="/profile/{{clip.owner}}">{{clip.owner}}</a></span>
+            </div>
+            <div>
+                <p>
+                    <span class="subtitle is-5 has-text-white">Created at: </span>{{clip.created_at|date:"Y-m-d H:i"}}
                 </p>
+            </div>
+            <div>
+                
+                <p>
+                    <span class="subtitle is-5 has-text-white">Tags: </span>
+                    {% for tag in clip.tags.all %}
+                    {% comment %} clip's tags {% endcomment %}
+                    <a href="#" class="tag is-warning">{{tag}}</a>
+                    {%endfor%}
+                </p>
+            </div>
+            <div class="py-6">
+                {% if user.is_authenticated and user.id == clip.owner_id %}
+                {% comment %} show edit + delete buttons only if user is logged in AND is clip's owner {% endcomment %}
+                <div class="">
+                    <div class="buttons mx-4">
+                        <a href="{% url 'clip_update' clip.pk %}" class="button is-info">
+                            <span class="icon">
+                                <i class="fas fa-edit"></i>
+                            </span>
+                        </a>
+                        <a href="{% url 'clip_delete' clip.pk %}" class="button is-danger">
+                            <span class="icon">
+                                <i class="fas fa-trash-alt"></i>
+                            </span>
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        
         </div>
     </div>
-    <div>
-        <div class="is-flex">
-            {% comment %} clip's HTML + CSS details {% endcomment %}
-            <p><span class="subtitle is-5">HTML: </span><pre>{{clip.html}}</pre></p>
-            <p><span class="subtitle is-5">CSS: </span><pre>{{clip.css}}</pre></p>
+    <div class="columns is-multiline">
+        {% comment %} clip's HTML + CSS details {% endcomment %}
+        <div class="column">
+            <p><span class="subtitle is-5 has-text-white px-2">HTML: </span><pre>{{clip.html}}</pre></p>
         </div>
+        <div class="column">
+            <p><span class="subtitle is-5 has-text-white px-2">CSS: </span><pre>{{clip.css}}</pre></p>
+        </div>
+        
     </div>
 </div>
 {% endblock %}
