@@ -1,39 +1,41 @@
-{% load widget_tweaks %} 
+{% load widget_tweaks %}
 {% for hidden_field in form.hidden_fields %} 
-{{ hidden_field }} 
+    {{ hidden_field }} 
 {% endfor %} 
 {% if form.non_field_errors %}
-<div class="has-text-alert">
-    {% for error in form.non_field_errors %}
-    {{error}} 
-    {% endfor %}
-</div>
-{% endif %}
-{% for field in form.visible_fields %}
-<div class="field is-large">
-    {% if form.is_bound %} 
-        {% if field.errors %} 
-        <div class="field is-large">
-            <div class="control">
-            {% render_field field %} 
-            </div>
-        </div>
-        {% for error in field.errors %}
-            <span class="help has-text-red has-text-weight-bold">{{ error }}</span>
-        {% endfor %} 
-    {% else %} 
-        <div class="field is-large">
-            <div class="control">
-            {% render_field field %} 
-            </div>
-        </div>
-    {% endif %} 
-    {% else %} 
-    <div class="field is-normal">
-        <div class="control">
-        {% render_field field %} 
-        </div>
+    <div class="has-text-alert">
+        {% for error in form.non_field_errors %} 
+            {{error}} 
+        {% endfor %}
     </div>
-    {% endif %}
-</div>
+{% endif %} 
+{% for field in form.visible_fields %}
+    <div class="field is-large">
+        {% if form.is_bound %}
+            {% if field.errors %}
+                <div class="field is-large">
+                    <div class="control has-text-white">
+                        {% render_field field %}
+                    </div>
+                </div>
+                {% for error in field.errors %}
+                    <span class="help has-text-red has-text-weight-bold">
+                        {{ error }}
+                    </span>
+                {% endfor %} 
+                {% else %}
+                <div class="field is-large">
+                    <div class="control has-text-white">
+                        {% render_field field %}
+                    </div>
+                </div>
+            {% endif %} 
+            {% else %}
+                <div class="field is-normal">
+                    <div class="control has-text-white">
+                        {% render_field field %}
+                    </div>
+                </div>
+        {% endif %}
+    </div>
 {% endfor %}

@@ -5,7 +5,7 @@
         <div class="has-background-black has-text-white px-4">
             <div class="">
                 <form method="post" action="{% url 'signup' %}">
-                    {% csrf_token %} {% include './formtemplate.html' with form=form %}
+                    {% csrf_token %} {{ form.as_p }}
 
                     <div class="control mt-4">
                         <input type="submit" class="button is-primary" value="Sign Up" />

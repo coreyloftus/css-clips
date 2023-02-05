@@ -74,12 +74,12 @@ class ClipCreate(LoginRequiredMixin, CreateView):
 
 # validates form being submitted
     def form_valid(self, form):
-        form.instance.user = self.request.user
+        form.instance.owner = self.request.user
+        print(self.request.user)
         return super(ClipCreate, self).form_valid(form)
 # If successful, redirects user to the newly created Clip's detail page
 
     def get_success_url(self):
-        print(self.kwargs)
         return reverse('clip_detail', kwargs={'pk': self.object.pk})
 
 
@@ -105,45 +105,33 @@ class ClipUpdate(UpdateView):
         # returns user to the Clip's detail page w/ the updated info
         return reverse_lazy('clip_detail', kwargs={'pk': self.object.pk})
 
-class LogIn(View):
-    def get(self,request):
-        form = AuthenticationForm()
-        form.fields['username'].widget.attrs.update({
-            'placeholder':'Username'
-        })
-        form.fields['password'].widget.attrs.update({
-            'placeholder':'Password'
-        })
-        context = {"form": form}
-        return render(request, "registration/login.html", context)
+# class LogIn(View):
+#     def get(self,request):
+#         form = AuthenticationForm()
+#         form.fields['username'].widget.attrs.update({
+#             'placeholder':'Username'
+#         })
+#         form.fields['password'].widget.attrs.update({
+#             'placeholder':'Password'
+#         })
+#         context = {"form": form}
+#         return render(request, "registration/login.html", context)
     
-    def post(self, request):
-        form = AuthenticationForm(data=request.POST, request=request)
-        if form.is_valid():
-            user = form.get_user()
-            login(request, user)
-            return redirect("all_clips")
-        else:
-            context = {"form": form}
-            return render(request, "registration/login.html", context)
+#     def post(self, request):
+#         form = AuthenticationForm(data=request.POST, request=request)
+#         if form.is_valid():
+#             user = form.get_user()
+#             login(request, user)
+#             return redirect("all_clips")
+#         else:
+#             context = {"form": form}
+#             return render(request, "registration/login.html", context)
 
 class SignUp(View):
     # User Sign Up route
     # takes New User to sign up form page
     def get(self, request):
-        form = SignUpForm()
-        form.fields['username'].widget.attrs.update({
-            'placeholder':'Username'
-        })
-        form.fields['email'].widget.attrs.update({
-            'placeholder':'Email'
-        })
-        form.fields['password'].widget.attrs.update({
-            'placeholder':'Password'
-        })
-        form.fields['password_validate'].widget.attrs.update({
-            'placeholder':'Confirm your password'
-        })
+        form = UserCreationForm()
         context = {"form": form}
         return render(request, "registration/signup.html", context)
 
