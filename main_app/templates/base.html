@@ -15,7 +15,7 @@
         <script src="{%static 'scripts/main.js'%}" defer></script>
         <title>CSS Clips {%block title%}{%endblock%}</title>
     </head>
-    <body>
+    <body class="pl-4 pr-4">
         {% comment %} navbar {% endcomment %}
         <nav class="navbar has-background-black" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
@@ -93,7 +93,7 @@
             </div>
             </div>
         </nav>
-        <div class="mgb-4">
+        <div class="px-4">
             {% comment %} add margin to the bottom of every element displayed {% endcomment %}
             {% block content %} {% endblock %}
         </div>

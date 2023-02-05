@@ -8,7 +8,7 @@ from django.http import HttpResponse
 from django.urls import reverse_lazy, reverse
 
 from django.contrib.auth import login
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -107,7 +107,7 @@ class ClipUpdate(UpdateView):
 
 class LogIn(View):
     def get(self,request):
-        form = LogInForm()
+        form = AuthenticationForm()
         form.fields['username'].widget.attrs.update({
             'placeholder':'Username'
         })
@@ -116,6 +116,16 @@ class LogIn(View):
         })
         context = {"form": form}
         return render(request, "registration/login.html", context)
+    
+    def post(self, request):
+        form = AuthenticationForm(data=request.POST, request=request)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            return redirect("all_clips")
+        else:
+            context = {"form": form}
+            return render(request, "registration/login.html", context)
 
 class SignUp(View):
     # User Sign Up route
