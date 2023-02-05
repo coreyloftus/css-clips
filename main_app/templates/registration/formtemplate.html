@@ -1,41 +1,10 @@
 {% load widget_tweaks %}
-{% for hidden_field in form.hidden_fields %} 
-    {{ hidden_field }} 
-{% endfor %} 
-{% if form.non_field_errors %}
-    <div class="has-text-alert">
-        {% for error in form.non_field_errors %} 
-            {{error}} 
-        {% endfor %}
+{% for field in form %}
+    <div class="form">
+        <label for="{{field.auto_id}}">
+            {{field.label}}
+        </label>
+        {{field}}
     </div>
-{% endif %} 
-{% for field in form.visible_fields %}
-    <div class="field is-large">
-        {% if form.is_bound %}
-            {% if field.errors %}
-                <div class="field is-large">
-                    <div class="control has-text-white">
-                        {% render_field field %}
-                    </div>
-                </div>
-                {% for error in field.errors %}
-                    <span class="help has-text-red has-text-weight-bold">
-                        {{ error }}
-                    </span>
-                {% endfor %} 
-                {% else %}
-                <div class="field is-large">
-                    <div class="control has-text-white">
-                        {% render_field field %}
-                    </div>
-                </div>
-            {% endif %} 
-            {% else %}
-                <div class="field is-normal">
-                    <div class="control has-text-white">
-                        {% render_field field %}
-                    </div>
-                </div>
-        {% endif %}
-    </div>
+    <button type="submit">Submit</button>
 {% endfor %}

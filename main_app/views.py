@@ -27,7 +27,6 @@ from django.views.generic.detail import DetailView, SingleObjectMixin
 #     response.status_code = 400
 #     return response
 
-
 class About(TemplateView):
     # about route
     # info about the project, links, etc (TL;DR readme)
@@ -134,9 +133,7 @@ class SignUp(View):
         form = UserCreationForm()
         context = {"form": form}
         return render(request, "registration/signup.html", context)
-
-
-    # validates and submits the form
+    
     # redirects User to the Clips Index page, with them signed in
     def post(self, request):
         form = UserCreationForm(request.POST)
