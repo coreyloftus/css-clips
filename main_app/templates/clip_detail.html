@@ -28,7 +28,7 @@
                     <span class="subtitle is-5 has-text-white">Tags: </span>
                     {% for tag in clip.tags.all %}
                     {% comment %} clip's tags {% endcomment %}
-                    <a href="#" class="tag is-warning">{{tag}}</a>
+                    <a href="/tags/{{tag.name}}" class="tag is-warning">{{tag}}</a>
                     {%endfor%}
                 </p>
             </div>
