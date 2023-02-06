@@ -1,8 +1,16 @@
 # CSS Clips
 
 CSS Clips is an app where users can view a database of user created CSS animations in a grid display.
+You might think of it as a library of simple CSS animation clips.
+
+I was inspired to create this project when I was looking for simple CSS animations I might include in my own portfolio website. Of course, there's Codepen, but most of the animations on there are super complex, and not vanilla HTML/CSS. And of course, there's Giphy, but I wanted HTML/CSS animations, not GIFs. There had to be somewhere to view a bunch of CSS clips at once... right? I couldn't find one. I realized that if it didn't exist, I would have to create it.
+
+I'm pleased to introduce you to my own personal library of CSS Clips. I'd be honored if you'd contribute to it, and make it yours, as well.
+
+~ C
 
 ## Screenshots
+
 ![Index Page](main_app/static/assets/screenshots/index-route.png)
 ![Detail Page (showing mobile responsiveness)](main_app/static/assets/screenshots/detail-route-mobile.png)
 ![User Profile route](main_app/static/assets/screenshots/profile-route.png)
@@ -41,20 +49,31 @@ Create your first clip, and you're up and running.
 
 ## How to Use the Project
 
+You might either: use the live hosted site, or clone down and create your own instance...
+as a way to keep your own library of cool, simple CSS animations for future reference.
+If using my hosted site, please keep it classy.
+
 ## Credits
 
-Many thanks to for all coders who have come before, and made this tech stack possible.
+Many thanks to for all coders who have come before, who made this tech stack possible.
 
--   Instructional Team for General Assembly's SEI 10-31-22
--   Fellow cohort members from SEI 10-31-22, for your support.
+Specific thanks to:
+
+-   the Instructional Team for General Assembly's SEI 10-31-22
+-   my fellow cohort members from SEI 10-31-22, for your support and friendship
 -   The Django Team
 -   The Python Team
 -   The Bulma Team
--   Giphy and CodePen, for making an awesome app that inspired this one, here.
-
-## Badges
+-   Giphy and CodePen, for making awesome apps that inspired this one, here
 
 ## How to Contribute to the Project
+
+You might:
+
+-   Take a look at the issues page, and tackle one, yourself.
+-   Submit a new issue.
+-   Visit the live site, create a username, and add a Clip.
+-   Clone down the repo, and make it your own.
 
 ## Built With
 
@@ -67,6 +86,9 @@ Many thanks to for all coders who have come before, and made this tech stack pos
 ## Future Updates
 
 -   [ ] Add "Favorite" functionality -- user can add a clip to their favorites, view favorites on their profile or via link on navbar dropdown (visible while logged in)
+-   [ ] Add Search bar to index page
+-   [ ] Add ability for Tags to be created by users when posting a clip
+-   [ ] Incorporate Django bleach package to prevent malicious users from submitting code that corrupts/crashes the app
 
 ## Author
 
@@ -81,5 +103,3 @@ Many thanks to for all coders who have come before, and made this tech stack pos
 Contributions, issues, and feature requests are welcome!
 
 Give a ⭐️ if you like this project!
-
-### License
