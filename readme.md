@@ -10,9 +10,13 @@ I'm pleased to introduce you to my own personal library of CSS Clips. I'd be hon
 ~ C
 
 ## Screenshots
-
+Index Page of all clips
 ![Index Page](main_app/static/assets/screenshots/index-route.png)
+Detail Page 
+(displaying one clip, and its code | check out the responsive styling)
 ![Detail Page (showing mobile responsiveness)](main_app/static/assets/screenshots/detail-route-mobile.png)
+User Profile page
+(only clips made by the user you are viewing will show up on their profile page)
 ![User Profile route](main_app/static/assets/screenshots/profile-route.png)
 
 ## Links
