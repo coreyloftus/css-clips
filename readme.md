@@ -3,8 +3,9 @@
 CSS Clips is an app where users can view a database of user created CSS animations in a grid display.
 
 ## Screenshots
-
--   to be added as project begins development
+![Index Page](main_app/static/assets/screenshots/index-route.png)
+![Detail Page (showing mobile responsiveness)](main_app/static/assets/screenshots/detail-route-mobile.png)
+![User Profile route](main_app/static/assets/screenshots/profile-route.png)
 
 ## Links
 
@@ -36,6 +37,8 @@ Then, navigate to:
 
 You should see the homepage of the app appear.
 
+Create your first clip, and you're up and running.
+
 ## How to Use the Project
 
 ## Credits
@@ -43,14 +46,11 @@ You should see the homepage of the app appear.
 Many thanks to for all coders who have come before, and made this tech stack possible.
 
 -   Instructional Team for General Assembly's SEI 10-31-22
-    -   Joshua
-    -   Zakariah
-    -   Brian
 -   Fellow cohort members from SEI 10-31-22, for your support.
--   Django Team
--   Python Team
--   Bulma Team
--   Giphy, for making an awesome app that inspired this one, here.
+-   The Django Team
+-   The Python Team
+-   The Bulma Team
+-   Giphy and CodePen, for making an awesome app that inspired this one, here.
 
 ## Badges
 

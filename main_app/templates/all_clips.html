@@ -1,16 +1,15 @@
 {% extends 'base.html' %} {% block title %} Clips Index {% endblock %} {% block content %}
-<div class="columns is-multiline mt-4 mx-4">
+<div class="columns is-multiline is-centered mt-4 mx-4">
     {% comment %} container div to display all clips {% endcomment %} {% for clip in clips %} {% comment %} display this for each clip in DB {% endcomment %}
     <a href="{% url 'clip_detail' clip.pk %}">
-        <div class="column">
+        <div class="column block">
             <div class="">
                 <p class="title is-4 has-text-white">{{clip.title}}</p>
             </div>
             <div class="" style="">
                 {% comment %} picture frame / container div for single clip {% endcomment %}
                 <div class="is-clipped" style="width: 300px; height: 300px; border: 10px ridge rgba(255, 255, 50, 0.95)">
-                    {% comment %} display clip's user-entered HTML {% endcomment %} 
-                    {{clip.html | safe}}
+                    {% comment %} display clip's user-entered HTML {% endcomment %} {{clip.html | safe}}
                     <style media="screen">
                         {% comment %} apply clip's user-entered CSS to clip's HTML {% endcomment %}
                         {{clip.css | safe}}
