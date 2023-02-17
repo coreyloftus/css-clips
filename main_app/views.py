@@ -40,6 +40,9 @@ class AllClips(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        # Search bar context code
+            # if a title param is present, return only Clips that contain the search string
+            # otherwise returns all Clips
         title = self.request.GET.get("title")
         if title != None:
             context['clips'] = Clip.objects.filter(title__icontains=title)

@@ -1,4 +1,16 @@
 {% extends 'base.html' %} {% block title %} Clips Index {% endblock %} {% block content %}
+{% comment %} search bar {% endcomment %}
+<div class="is-flex is-justify-content-center">
+    <form class="mb-5" method="get">
+        <div class="field has-addons">
+            <div class="control">
+                <input class="input is-medium" type="text" name="title" placeholder="Search all the clips"/>
+            </div>
+            <div class="control">
+                <input class="button" type="submit" name="submit" value="Search"/>
+            </div>
+        </div>
+</div>
 <div class="columns is-multiline is-centered mt-4 mx-4">
     {% comment %} container div to display all clips {% endcomment %} {% for clip in clips %} {% comment %} display this for each clip in DB {% endcomment %}
     <a href="{% url 'clip_detail' clip.pk %}">
