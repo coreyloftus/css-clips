@@ -12,7 +12,7 @@
         </div>
 </div>
 {% if query %}
-<div>
+<div class="is-flex">
     <a href="{% url 'all_clips' %}">
         <p class="subtitle is-5 has-text-white-bis">
             <span class="icon is-small">
@@ -22,14 +22,15 @@
         </p>
     </a>
 </div>
+<h1 class="has-text-white-bis">Searching for: <span class="is-size-3">{{query}}</span></h1>
 {% endif %}
-{% if query %}
-        <div class="columns is-multiline is-centered mt-4 mx-4">
+{% if query and tags %}
+        <div class="columns is-multiline mt-4 mx-4">
             {% for tag in tags %}
-            <div class="is column">    
+            <div class="is-column">    
                 <a 
                 href="/tags/{{tag.name}}" 
-                class="tag is-dark has-text-white-bis">
+                class="tag is-warning">
                 {{tag}}
                 </a>
             <div>
@@ -65,12 +66,20 @@
                 </div>
             </div>
         </a>
-    {% empty %} {% comment %} if no clips were found in the db, display this {% endcomment %}
-    <article class="message">
-        <div class="message-header is-warning">
-            <p class="is-warning">No clips in index</p>
-        </div>
-    </article>
+        {% comment %} if no clips in the db, display this {% endcomment %}
+        {% empty %} 
+            <article class="message is-warning">
+                <div class="message-body">
+                    <p class="subtitle is-6">No clips in db</p>
+                </div>
+            </article>
     {% endfor %}
+    {% if query and not tags and not clips %}
+        <article class="message is-warning">
+            <div class="message-body">
+                <p class="subtitle is-6">No clips matched your search</p>
+            </div>
+        </article>
+    {% endif %}
 </div>
 {% endblock %}

@@ -50,7 +50,6 @@ class AllClips(TemplateView):
             context['tags'] = Tag.objects.filter(name__icontains=query)
             context['header'] = f'Searching for {query}'
         else:
-            # context['query'] = False
             context['clips'] = Clip.objects.all()
             context['tags'] = Tag.objects.all()
             context['header'] = 'Clip Collection Index'
