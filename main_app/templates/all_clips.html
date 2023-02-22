@@ -4,7 +4,7 @@
     <form class="mb-5" method="get">
         <div class="field">
             <div class="control has-icons-right">
-                <input class="input is-fullwidth" type="text" name="title" placeholder="Search by clip or tag title"/>
+                <input class="input is-fullwidth has-background-white-bis" type="text" name="title" placeholder="Search by clip or tag title"/>
                 <span class="icon is-small is-right">
                     <i class="fa fa-search"></i>
                 </span>
@@ -19,7 +19,7 @@
 {% if query %}
 <div>
     <a href="{% url 'all_clips' %}">
-        <p class="subtitle is-5 has-text-white">
+        <p class="subtitle is-5 has-text-white-bis">
             <span class="icon is-small">
                 <i class="fa fa-arrow-left"></i>
             </span>
@@ -35,7 +35,7 @@
         <a href="{% url 'clip_detail' clip.pk %}">
             <div class="column block">
                 <div class="">
-                    <p class="title is-4 has-text-white">{{clip.title}}</p>
+                    <p class="title is-4 has-text-white-bis">{{clip.title}}</p>
                 </div>
                 <div class="" style="">
                     {% comment %} picture frame / container div for single clip {% endcomment %}
@@ -49,10 +49,10 @@
                 </div>
                 <div class="">
                     {% comment %} container div for clip's details {% endcomment %}
-                    <p><span class="subtitle is-5 has-text-white">{{clip.title}}</span></p>
-                    <p><span class="subtitle is-5 has-text-white">by: </span><a href="/profile/{{clip.owner}}">{{clip.owner}}</a></p>
+                    <p><span class="subtitle is-5 has-text-white-bis">{{clip.title}}</span></p>
+                    <p><span class="subtitle is-5 has-text-white-bis">by: </span><a href="/profile/{{clip.owner}}">{{clip.owner}}</a></p>
                     {% for tag in clip.tags.all %} {% comment %} display all tags for the clip {% endcomment %}
-                    <a href="/tags/{{tag.name}}" class="tag is-dark has-text-white">{{tag}}</a>
+                    <a href="/tags/{{tag.name}}" class="tag is-dark has-text-white-bis">{{tag}}</a>
                     {% endfor %}
                 </div>
             </div>
