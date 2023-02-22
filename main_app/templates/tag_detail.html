@@ -1,4 +1,14 @@
 {% extends 'base.html' %} {% block content %}
+<div>
+    <a href="{% url 'all_clips' %}">
+        <p class="subtitle is-6 has-text-white-bis">
+            <span class="icon is-small">
+                <i class="fa fa-arrow-left"></i>
+            </span>
+            Back to all clips
+        </p>
+    </a>
+</div>
 <h1 class="has-text-white-bis">Clips tagged with: <span class="is-size-3">{{name}}</span></h1>
 <div class="columns is-multiline mt-4 mx-4">
     {% for clip in clip_data %}

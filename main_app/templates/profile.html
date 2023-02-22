@@ -1,4 +1,14 @@
 {% extends 'base.html' %} {% block content %}
+<div>
+    <a href="{% url 'all_clips' %}">
+        <p class="subtitle is-6 has-text-white-bis">
+            <span class="icon is-small">
+                <i class="fa fa-arrow-left"></i>
+            </span>
+            Back to all clips
+        </p>
+    </a>
+</div>
 <div class="mt-4">
     {% comment %} card displaying info of whoever's profile is being viewed {% endcomment %}
     <div class="column is-one-quarter">
