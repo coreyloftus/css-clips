@@ -1,5 +1,15 @@
 {% extends 'base.html' %}{% block title %}{% endblock %} {% block content %}
-<h1 class="has-text-white">Now viewing: <span class="is-size-2 has-text-weight-bold has-text-white">{{clip.title}}</span></h1>
+<div>
+    <a href="{% url 'all_clips' %}">
+        <p class="subtitle is-6 has-text-white-bis">
+            <span class="icon is-small">
+                <i class="fa fa-arrow-left"></i>
+            </span>
+            Back to all clips
+        </p>
+    </a>
+</div>
+<h1 class="has-text-white-bis">Now viewing: <span class="is-size-2 has-text-weight-bold has-text-white-bis">{{clip.title}}</span></h1>
 
     <div class="py-3 columns is-multiline is-centered">
         {% comment %} clip gold frame div {% endcomment %}
@@ -12,20 +22,20 @@
                 </div>
             </div>
         </div>
-        <div class="column mx-4 has-text-white block">
+        <div class="column mx-4 has-text-white-bis block">
             {% comment %} clip's details {% endcomment %}
             <div>
-                <span class="is-size-2 has-text-weight-bold has-text-white">{{clip.title}}</span> by <span><a href="/profile/{{clip.owner}}">{{clip.owner}}</a></span>
+                <span class="is-size-2 has-text-weight-bold has-text-white-bis">{{clip.title}}</span> by <span><a href="/profile/{{clip.owner}}">{{clip.owner}}</a></span>
             </div>
             <div>
                 <p>
-                    <span class="subtitle is-5 has-text-white">Created at: </span>{{clip.created_at|date:"Y-m-d H:i"}}
+                    <span class="subtitle is-5 has-text-white-bis">Created at: </span>{{clip.created_at|date:"Y-m-d H:i"}}
                 </p>
             </div>
             <div>
                 
                 <p>
-                    <span class="subtitle is-5 has-text-white">Tags: </span>
+                    <span class="subtitle is-5 has-text-white-bis">Tags: </span>
                     {% for tag in clip.tags.all %}
                     {% comment %} clip's tags {% endcomment %}
                     <a href="/tags/{{tag.name}}" class="tag is-warning">{{tag}}</a>
@@ -56,10 +66,10 @@
     <div class="columns is-multiline">
         {% comment %} clip's HTML + CSS details {% endcomment %}
         <div class="column">
-            <p><span class="subtitle is-5 has-text-white px-2">HTML: </span><pre>{{clip.html}}</pre></p>
+            <p><span class="subtitle is-5 has-text-white-bis px-2">HTML: </span><pre>{{clip.html}}</pre></p>
         </div>
         <div class="column">
-            <p><span class="subtitle is-5 has-text-white px-2">CSS: </span><pre>{{clip.css}}</pre></p>
+            <p><span class="subtitle is-5 has-text-white-bis px-2">CSS: </span><pre>{{clip.css}}</pre></p>
         </div>
         
     </div>

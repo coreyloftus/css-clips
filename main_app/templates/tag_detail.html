@@ -1,11 +1,21 @@
 {% extends 'base.html' %} {% block content %}
-<h1 class="has-text-white">Clips tagged with: <span class="is-size-3">{{name}}</span></h1>
+<div>
+    <a href="{% url 'all_clips' %}">
+        <p class="subtitle is-6 has-text-white-bis">
+            <span class="icon is-small">
+                <i class="fa fa-arrow-left"></i>
+            </span>
+            Back to all clips
+        </p>
+    </a>
+</div>
+<h1 class="has-text-white-bis">Clips tagged with: <span class="is-size-3">{{name}}</span></h1>
 <div class="columns is-multiline mt-4 mx-4">
     {% for clip in clip_data %}
     <a href="{% url 'clip_detail' clip.pk %}">
         <div class="column">
             <div class="">
-                <p class="title is-4 has-text-white">{{clip.name}}</p>
+                <p class="title is-4 has-text-white-bis">{{clip.name}}</p>
             </div>
             <div class="" style="">
                 <div class="is-clipped" style="width: 300px; height: 300px; border: 10px ridge rgba(255, 255, 50, 0.95)">
@@ -15,10 +25,10 @@
                 </div>
             </div>
             <div class="">
-                <p><span class="subtitle is-5 has-text-white">{{clip}}</span></p>
-                <p><span class="subtitle is-5 has-text-white">by: </span><a href="/profile/{{clip.owner}}">{{clip.owner}}</a></p>
+                <p><span class="subtitle is-5 has-text-white-bis">{{clip}}</span></p>
+                <p><span class="subtitle is-5 has-text-white-bis">by: </span><a href="/profile/{{clip.owner}}">{{clip.owner}}</a></p>
                 {% for tag in clip.tags.all %}
-                <a href="/tags/{{tag.name}}" class="tag is-dark has-text-white">{{tag}}</a>
+                <a href="/tags/{{tag.name}}" class="tag is-dark has-text-white-bis">{{tag}}</a>
                 {% endfor %}
             </div>
         </div>
