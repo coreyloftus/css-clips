@@ -1,43 +1,62 @@
 {% extends 'base.html' %} {% block title %} Clips Index {% endblock %} {% block content %}
 {% comment %} search bar {% endcomment %}
-<div class="is-flex is-justify-content-center">
+<div class="column is-full">
     <form class="mb-5" method="get">
         <div class="field has-addons">
-            <div class="control">
-                <input class="input is-medium" type="text" name="title" placeholder="Search all the clips"/>
+            <div class="control is-fullwidth has-icons-left">
+                <input class="input" type="text" name="title" placeholder="Search by clip or tag title"/>
+                <span class="icon is-small is-left">
+                    <i class="fa fa-search"></i>
+                </span>
             </div>
-            <div class="control">
-                <input class="button" type="submit" name="submit" value="Search"/>
-            </div>
+            {% comment %} <div class="control is-expanded">
+                <span class="icon">
+                    <i class="button fa fa-search" type="submit" name="submit" value="Search"></i>
+                </span>
+            </div> {% endcomment %}
         </div>
 </div>
+{% if query %}
+<div>
+    <a href="{% url 'all_clips' %}">
+        <p class="subtitle is-5 has-text-white">
+            <span class="icon is-small">
+                <i class="fa fa-arrow-left"></i>
+            </span>
+            Back to all clips
+        </p>
+    </a>
+</div>
+{% endif %}
 <div class="columns is-multiline is-centered mt-4 mx-4">
-    {% comment %} container div to display all clips {% endcomment %} {% for clip in clips %} {% comment %} display this for each clip in DB {% endcomment %}
-    <a href="{% url 'clip_detail' clip.pk %}">
-        <div class="column block">
-            <div class="">
-                <p class="title is-4 has-text-white">{{clip.title}}</p>
-            </div>
-            <div class="" style="">
-                {% comment %} picture frame / container div for single clip {% endcomment %}
-                <div class="is-clipped" style="width: 300px; height: 300px; border: 10px ridge rgba(255, 255, 50, 0.95)">
-                    {% comment %} display clip's user-entered HTML {% endcomment %} {{clip.html | safe}}
-                    <style media="screen">
-                        {% comment %} apply clip's user-entered CSS to clip's HTML {% endcomment %}
-                        {{clip.css | safe}}
-                    </style>
+    {% comment %} container div to display all clips {% endcomment %} 
+    {% for clip in clips %} 
+        {% comment %} display this for each clip in DB {% endcomment %}
+        <a href="{% url 'clip_detail' clip.pk %}">
+            <div class="column block">
+                <div class="">
+                    <p class="title is-4 has-text-white">{{clip.title}}</p>
+                </div>
+                <div class="" style="">
+                    {% comment %} picture frame / container div for single clip {% endcomment %}
+                    <div class="is-clipped" style="width: 300px; height: 300px; border: 10px ridge rgba(255, 255, 50, 0.95)">
+                        {% comment %} display clip's user-entered HTML {% endcomment %} {{clip.html | safe}}
+                        <style media="screen">
+                            {% comment %} apply clip's user-entered CSS to clip's HTML {% endcomment %}
+                            {{clip.css | safe}}
+                        </style>
+                    </div>
+                </div>
+                <div class="">
+                    {% comment %} container div for clip's details {% endcomment %}
+                    <p><span class="subtitle is-5 has-text-white">{{clip.title}}</span></p>
+                    <p><span class="subtitle is-5 has-text-white">by: </span><a href="/profile/{{clip.owner}}">{{clip.owner}}</a></p>
+                    {% for tag in clip.tags.all %} {% comment %} display all tags for the clip {% endcomment %}
+                    <a href="/tags/{{tag.name}}" class="tag is-dark has-text-white">{{tag}}</a>
+                    {% endfor %}
                 </div>
             </div>
-            <div class="">
-                {% comment %} container div for clip's details {% endcomment %}
-                <p><span class="subtitle is-5 has-text-white">{{clip.title}}</span></p>
-                <p><span class="subtitle is-5 has-text-white">by: </span><a href="/profile/{{clip.owner}}">{{clip.owner}}</a></p>
-                {% for tag in clip.tags.all %} {% comment %} display all tags for the clip {% endcomment %}
-                <a href="/tags/{{tag.name}}" class="tag is-dark has-text-white">{{tag}}</a>
-                {% endfor %}
-            </div>
-        </div>
-    </a>
+        </a>
     {% empty %} {% comment %} if no clips were found in the db, display this {% endcomment %}
     <article class="message">
         <div class="message-header is-warning">
