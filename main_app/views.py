@@ -43,13 +43,14 @@ class AllClips(TemplateView):
         # Search bar context code
             # if a title param is present, return only Clips that contain the search string
             # otherwise returns all Clips
-        title = self.request.GET.get("title")
-        if title != None:
-            context['query'] = True
-            context['clips'] = Clip.objects.filter(title__icontains=title)
-            context['header'] = f'Searching for {title}'
+        query = self.request.GET.get("query")
+        if query:
+            context['query'] = query
+            context['clips'] = Clip.objects.filter(title__icontains=query)
+            context['tags'] = Tag.objects.filter(name__icontains=query)
+            context['header'] = f'Searching for {query}'
         else:
-            context['query'] = False
+            # context['query'] = False
             context['clips'] = Clip.objects.all()
             context['tags'] = Tag.objects.all()
             context['header'] = 'Clip Collection Index'

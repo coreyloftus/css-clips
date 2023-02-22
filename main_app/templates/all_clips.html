@@ -4,16 +4,11 @@
     <form class="mb-5" method="get">
         <div class="field">
             <div class="control has-icons-right">
-                <input class="input is-fullwidth has-background-white-bis" type="text" name="title" placeholder="Search by clip or tag title"/>
+                <input class="input is-fullwidth has-background-white-bis" type="text" name="query" placeholder="Search by clip or tag title"/>
                 <span class="icon is-small is-right">
                     <i class="fa fa-search"></i>
                 </span>
             </div>
-            {% comment %} <div class="control is-expanded">
-                <span class="icon">
-                    <i class="button fa fa-search" type="submit" name="submit" value="Search"></i>
-                </span>
-            </div> {% endcomment %}
         </div>
 </div>
 {% if query %}
@@ -28,6 +23,19 @@
     </a>
 </div>
 {% endif %}
+{% if query %}
+        <div class="columns is-multiline is-centered mt-4 mx-4">
+            {% for tag in tags %}
+            <div class="is column">    
+                <a 
+                href="/tags/{{tag.name}}" 
+                class="tag is-dark has-text-white-bis">
+                {{tag}}
+                </a>
+            <div>
+            {% endfor %}
+        </div>
+    {% endif %}
 <div class="columns is-multiline is-centered mt-4 mx-4">
     {% comment %} container div to display all clips {% endcomment %} 
     {% for clip in clips %} 
