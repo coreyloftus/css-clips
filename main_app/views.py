@@ -45,9 +45,11 @@ class AllClips(TemplateView):
             # otherwise returns all Clips
         title = self.request.GET.get("title")
         if title != None:
+            context['query'] = True
             context['clips'] = Clip.objects.filter(title__icontains=title)
             context['header'] = f'Searching for {title}'
         else:
+            context['query'] = False
             context['clips'] = Clip.objects.all()
             context['tags'] = Tag.objects.all()
             context['header'] = 'Clip Collection Index'
