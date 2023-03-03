@@ -7,6 +7,8 @@ from django.template import RequestContext
 from django.http import HttpResponse
 from django.urls import reverse_lazy, reverse
 
+from django.db import IntegrityError
+
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -27,6 +29,7 @@ from django.views.generic.detail import DetailView, SingleObjectMixin
 #     response.status_code = 400
 #     return response
 
+
 class About(TemplateView):
     # about route
     # info about the project, links, etc (TL;DR readme)
@@ -41,8 +44,8 @@ class AllClips(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         # Search bar context code
-            # if a title param is present, return only Clips that contain the search string
-            # otherwise returns all Clips
+        # if a title param is present, return only Clips that contain the search string
+        # otherwise returns all Clips
         query = self.request.GET.get("query")
         if query:
             context['query'] = query
@@ -104,7 +107,7 @@ class ClipUpdate(UpdateView):
     model = Clip
     fields = ['title', 'html', 'css', 'tags']
     template_name = 'clip_update.html'
-    
+
     def get_success_url(self):
         # returns user to the Clip's detail page w/ the updated info
         return reverse_lazy('clip_detail', kwargs={'pk': self.object.pk})
@@ -120,7 +123,7 @@ class ClipUpdate(UpdateView):
 #         })
 #         context = {"form": form}
 #         return render(request, "registration/login.html", context)
-    
+
 #     def post(self, request):
 #         form = AuthenticationForm(data=request.POST, request=request)
 #         if form.is_valid():
@@ -131,6 +134,7 @@ class ClipUpdate(UpdateView):
 #             context = {"form": form}
 #             return render(request, "registration/login.html", context)
 
+
 class SignUp(View):
     # User Sign Up route
     # takes New User to sign up form page
@@ -138,14 +142,18 @@ class SignUp(View):
         form = UserCreationForm()
         context = {"form": form}
         return render(request, "registration/signup.html", context)
-    
+
     # redirects User to the Clips Index page, with them signed in
     def post(self, request):
         form = UserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return redirect("all_clips")
+        if form.is_valid() and form.cleaned_data['password1'] == form.cleaned_data['password2']:
+            try:
+                user = form.save()
+                login(request, user)
+                return redirect("all_clips")
+            except IntegrityError:
+                form.add_error(
+                    'username', 'Username already taken. Choose another one.')
         else:
             context = {"form": form}
             return render(request, "registration/signup.html", context)
@@ -174,6 +182,7 @@ class Profile(TemplateView):
 class TagDetail(TemplateView):
     model = Tag
     template_name = 'tag_detail.html'
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         # pull tag's name out of the kwargs

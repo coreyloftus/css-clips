@@ -5,8 +5,9 @@
         <div class="has-background-black-bis has-text-white-bis px-4">
             <div class="">
                 <form method="post" action="{% url 'signup' %}">
-                    {% csrf_token %} {{ form.as_p }}
-
+                    {% csrf_token %} {% comment %} {{ form.as_p }} {% endcomment %} {% for field in form %}
+                    <div class="form-group">{{field.label_tag}} {{field}}</div>
+                    {% endfor %}
                     <div class="control mt-4">
                         <input type="submit" class="button is-primary" value="Sign Up" />
                         <input type="hidden" name="next" value="{{next}}" />
