@@ -4,9 +4,10 @@
         <h1 class="has-text-white-bis is-size-1 has-text-centered is-vcentered">Log in</h1>
         <div class="has-background-black-bis has-text-white-bis px-4 is-flex is-vcentered">
             <form method="post" action="{% url 'login' %}">
-                {% csrf_token %} {{ form.as_p }}
-                <input type="submit" class="btn" value="login" />
-                <input type="hidden" name="next" value="{{next}}" />
+                {% csrf_token %} {% comment %} {{ form.as_p }} {% endcomment %} {% for field in form %}
+                <div class="form-group py-1">{{field.label_tag}} {{field}}</div>
+                {% endfor %}
+                <input type="submit" class="button is-info" value="login" />
             </form>
         </div>
     </div>
