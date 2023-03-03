@@ -6,7 +6,7 @@
             <div class="">
                 <form method="post" action="{% url 'signup' %}">
                     {% csrf_token %} {% for field in form %}
-                    <div class="form-group">
+                    <div class="form-group py-1">
                         {% comment %} {{field.label_tag}} 
                         {{field}} {% endcomment %}
                         <input class="input" type="{{field.field.widget.input_type}}" name="{{field.name}}" placeholder="{{ field.label }}"{% if field.value %} value="{{ field.value }}"{% endif %} class="form-control {% if field.errors %}is-invalid{% endif %}">
