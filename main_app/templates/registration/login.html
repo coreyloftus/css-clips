@@ -5,7 +5,9 @@
         <div class="has-background-black-bis has-text-white-bis px-4 is-flex is-vcentered">
             <form method="post" action="{% url 'login' %}">
                 {% csrf_token %} {% comment %} {{ form.as_p }} {% endcomment %} {% for field in form %}
-                <div class="form-group py-1">{{field.label_tag}} {{field}}</div>
+                <div class="form-group py-1">
+                    <input class="input" type="{{field.field.widget.input_type}}" name="{{field.name}}" placeholder="{{ field.label }}"{% if field.value %} value="{{ field.value }}"{% endif %} class="form-control {% if field.errors %}is-invalid{% endif %}">
+                </div>
                 {% endfor %}
                 <input type="submit" class="button is-info" value="login" />
             </form>

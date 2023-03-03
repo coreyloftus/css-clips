@@ -23,6 +23,7 @@ class SignUpForm(forms.Form):
 class LogInForm(forms.Form):
     username = forms.CharField(
         required=True,
+        widget=forms.TextInput(attrs={'placeholder': 'username'})
     )
     password = forms.CharField(
         required=True,

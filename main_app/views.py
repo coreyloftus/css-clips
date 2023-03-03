@@ -112,29 +112,6 @@ class ClipUpdate(UpdateView):
         # returns user to the Clip's detail page w/ the updated info
         return reverse_lazy('clip_detail', kwargs={'pk': self.object.pk})
 
-# class LogIn(View):
-#     def get(self,request):
-#         form = AuthenticationForm()
-#         form.fields['username'].widget.attrs.update({
-#             'placeholder':'Username'
-#         })
-#         form.fields['password'].widget.attrs.update({
-#             'placeholder':'Password'
-#         })
-#         context = {"form": form}
-#         return render(request, "registration/login.html", context)
-
-#     def post(self, request):
-#         form = AuthenticationForm(data=request.POST, request=request)
-#         if form.is_valid():
-#             user = form.get_user()
-#             login(request, user)
-#             return redirect("all_clips")
-#         else:
-#             context = {"form": form}
-#             return render(request, "registration/login.html", context)
-
-
 class SignUp(View):
     # User Sign Up route
     # takes New User to sign up form page
@@ -142,9 +119,10 @@ class SignUp(View):
         form = UserCreationForm()
         context = {"form": form}
         return render(request, "registration/signup.html", context)
-
     # redirects User to the Clips Index page, with them signed in
+
     def post(self, request):
+        # custom post method to verify password match and stop username dupes
         form = UserCreationForm(request.POST)
         if form.is_valid() and form.cleaned_data['password1'] == form.cleaned_data['password2']:
             try:

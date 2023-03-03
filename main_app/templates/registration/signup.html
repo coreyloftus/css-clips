@@ -6,7 +6,11 @@
             <div class="">
                 <form method="post" action="{% url 'signup' %}">
                     {% csrf_token %} {% for field in form %}
-                    <div class="form-group">{{field.label_tag}} {{field}}</div>
+                    <div class="form-group">
+                        {% comment %} {{field.label_tag}} 
+                        {{field}} {% endcomment %}
+                        <input class="input" type="{{field.field.widget.input_type}}" name="{{field.name}}" placeholder="{{ field.label }}"{% if field.value %} value="{{ field.value }}"{% endif %} class="form-control {% if field.errors %}is-invalid{% endif %}">
+                    </div>
                     {% endfor %} {% if form.username.errors %}
                     <div class="error has-text-danger ">
                         {% for error in form.username.errors %}
@@ -16,7 +20,6 @@
                     {% endif %}
                     <div class="control mt-4">
                         <input type="submit" class="button is-primary" value="Sign Up" />
-                        <input type="hidden" name="next" value="{{next}}" />
                     </div>
                 </form>
             </div>
