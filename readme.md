@@ -98,7 +98,7 @@ You might:
 
 **Corey Loftus**
 
--   [Profile](https://github.com/rohit19060 "Corey Loftus")
+-   [Profile](https://github.com/coreyloftus "Corey Loftus")
 -   [Email](mailto:coreyloftus@gmail.com?subject=Hi "Hi there!")
 -   [Website](https://corey-loftus.netlify.app "My Portfolio")
 
