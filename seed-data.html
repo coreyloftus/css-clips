@@ -1,253 +1,137 @@
-<!-- simple cirlce spinner -->
+<!-- Red Square Rotate by loftylotus -->
+<div class="clip">
+    <div class="red-square"></div>
+</div>
+
+.clip{ position:relative; top:32%; left:32%;} .red-square{ height:100px; width:100px; background-color:red; border-radius:10%; animation:rotate 4s linear infinite; } @keyframes rotate { from { transform: rotate(0deg); } to { transform:
+rotate(360deg); } }
+<!-- Loading Spinner by loftylotus -->
+<div class="center">
+    <div class="first">
+        <div class="second">
+            <div class="third"></div>
+        </div>
+    </div>
+</div>
+
+.center{ width:100%; height:100%; display:flex; justify-content:center; align-items:center; } .second{ width:120px; height:120px; border:4px solid #fcd779; border-top:4px solid white; border-radius:50%; transition-property: transform; animation-name:
+rotate; animation-duration: 2s; animation-iteration-count: infinite; animation-timing-function: linear; } .third{ width:150px; height:150px; border:4px solid #fcd779; border-top:4px solid white; border-radius:50%; transition-property: transform;
+animation-name: rotate; animation-duration: 3s; animation-iteration-count: infinite; animation-timing-function: linear; } .first{ width:80px; height:80px; border:4px solid #fcd779; border-top:4px solid white; border-radius:50%; transition-property:
+transform; animation-name: rotate; animation-duration: 2s; animation-iteration-count: infinite; animation-timing-function: linear; } @keyframes rotate { from {transform: rotate(0deg);} to {transform: rotate(360deg);} }
+
+<!-- L'Arc de Triomphe by Tony4Prez -->
+<div class="arc-box">
+    <div class="core-outer circle abs-center">
+        <div class="core-inner circle abs-center"></div>
+    </div>
+</div>
+
+.arc-box{ display:flex; justify-content:center; align-items:center; position:relative; top:15%; } .circle { border-radius: 50%; } .core-inner { width: 100px; height: 100px; border: 5px solid #1B4e5f; background-color: #fff; box-shadow: 0px 0px 7px
+5px #52fefe, 0px 0px 10px 10px #52fefe inset; animation:blink 2s linear infinite; } .core-outer { width: 200px; height: 200px; display:flex; align-items:center; justify-content:center; border: 1px solid #52fefe; background-color: #fff; box-shadow:
+0px 0px 2px 1px #52fefe, 0px 0px 10px 5px #52fefe inset; } @keyframes blink{ 50%{opacity:0;} }
+
+<!-- I smash! by StrongestAvenger -->
+<div class="hulk-box">
+    <div class="square"></div>
+</div>
+
+.hulk-box{ display:flex; width:100%; height:100%; align-items:center; justify-content:center; } .square{ height:25%; width:25%; background-color:green; border-radius:10%; animation:hulk-out 4s linear infinite; } @keyframes hulk-out { 0% { transform:
+scale(1); } 10% { transform: scale(2); } 20% { transform: scale(1); } 30% { transform: scale (3); } 40% { transform: scale(1); } 50% { transform: scale(4); } 70% { transform: scale(2); } 100% { transform: scale(1); }
+
+<!-- blue square translate -->
+<!-- tags: translate, smash -->
+<div class="bsq"><div class="blue-square"></div></div>
+.bsq{ width:100%; height:100%; } .blue-square{ position:relative; top:25%; height:50%; width:50%; background-color:blue; border-radius:10%; animation:toandfrom 4s linear infinite; } @keyframes toandfrom { 0% { transform: translateX(0px); } 50% {
+transform: translateX(140px); } 100% { transform: translateX(0px); } }
+
+<!-- simple circle spinner -->
 <div id="html-spinner"></div>
-#html-spinner{
-    width:40px;
-    height:40px;
-    border:4px solid #fcd779;
-    border-top:4px solid white;
-    border-radius:50%;
-  transition-property: transform;
-    animation-name: rotate; 
-    animation-duration: 1.2s; 
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-  }
-  @keyframes rotate {
-      from {transform: rotate(0deg);}
-      to {transform: rotate(360deg);}
-  }
+#html-spinner{ width:40px; height:40px; border:4px solid #fcd779; border-top:4px solid white; border-radius:50%; transition-property: transform; animation-name: rotate; animation-duration: 1.2s; animation-iteration-count: infinite;
+animation-timing-function: linear; } @keyframes rotate { from {transform: rotate(0deg);} to {transform: rotate(360deg);} }
 
-  <!-- cap shield -->
+<!-- cap shield -->
 
-  <div class="shield">
-    <div class="star">
-    </div>
-  </div>
-  .shield {
-    width: 200px;
-    height: 200px;
-    background-color: blue;
-    border-radius: 50%;
-    position: relative;
-    animation: bounce 3s linear infinite;
-  }
-  
-  .star {
-    width: 100px;
-    height: 100px;
-    background-color: white;
-    position: absolute;
-    top: 50px;
-    left: 50px;
-    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-  }
-  
-  @keyframes bounce {
-    0% {
-      transform: translate(0, 0);
-    }
-    25% {
-      transform: translate(100%, 100%);
-    }
-    50% {
-      transform: translate(0, 200%);
-    }
-    75% {
-      transform: translate(-100%, 100%);
-    }
-    100% {
-      transform: translate(0, 0);
-    }
-  }  
+<div class="shield">
+    <div class="star"></div>
+</div>
+.shield { width: 200px; height: 200px; background-color: blue; border-radius: 50%; position: relative; animation: bounce 3s linear infinite; } .star { width: 100px; height: 100px; background-color: white; position: absolute; top: 50px; left: 50px;
+clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); } @keyframes bounce { 0% { transform: translate(0, 0); } 25% { transform: translate(100%, 100%); } 50% { transform: translate(0, 200%); } 75%
+{ transform: translate(-100%, 100%); } 100% { transform: translate(0, 0); } }
 
-  <!-- iron man arc reactor -->
+<!-- iron man arc reactor -->
 
-  <div class="core-outer circle abs-center"></div>
-  <div class="core-inner circle abs-center"></div>
+<div class="core-outer circle abs-center"></div>
+<div class="core-inner circle abs-center"></div>
 
-  .circle {
-    border-radius: 50%;
-  }
-  
-  .abs-center {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin: auto;
-  
-  }
-  
-  .core-inner {
-    width: 70px;
-    height: 70px;
-    border: 5px solid #1B4e5f;
-    background-color: #fff;
-    box-shadow: 0px 0px 7px 5px #52fefe, 0px 0px 10px 10px #52fefe inset;
-    animation:blink 2s linear infinite;
-  }
-  .core-outer {
-    width: 120px;
-    height: 120px;
-    border: 1px solid #52fefe;
-    background-color: #fff;
-    box-shadow: 0px 0px 2px 1px #52fefe, 0px 0px 10px 5px #52fefe inset;
-  }
-  @keyframes blink{
-    50%{opacity:0;}
-  }
+.circle { border-radius: 50%; } .abs-center { position: absolute; top: 0; right: 0; bottom: 0; left: 0; margin: auto; } .core-inner { width: 70px; height: 70px; border: 5px solid #1B4e5f; background-color: #fff; box-shadow: 0px 0px 7px 5px #52fefe,
+0px 0px 10px 10px #52fefe inset; animation:blink 2s linear infinite; } .core-outer { width: 120px; height: 120px; border: 1px solid #52fefe; background-color: #fff; box-shadow: 0px 0px 2px 1px #52fefe, 0px 0px 10px 5px #52fefe inset; } @keyframes
+blink{ 50%{opacity:0;} }
 
-  <!-- HawkEye -->
-  <div class="arrow-box">
+<!-- Target Practice by HawkEye -->
+<div class="arrow-box">
     <p class="arrow right offset"></p>
     <p class="arrow right offset"></p>
     <p class="arrow right offset"></p>
-    </div>
-    /* container */
-    .arrow-box{
-        width:100%;
-        height:100%;
-      }
-      /* space for the arrow */
-      .arrow::before {
-        display: inline-block;
-        width: 100%;
-        font-size: 4rem;
-      }
-      /* arrow itself */
-      .right::before { content: "\2192"; color:white;}
-      /* animation on hover */
-       
-      .arrow.offset:hover::before {
-        transform: translateX(110%);
-        transition: all 1.5s;
-      }
+</div>
+/* container */ .arrow-box{ width:100%; height:100%; } /* space for the arrow */ .arrow::before { display: inline-block; width: 100%; font-size: 4rem; } /* arrow itself */ .right::before { content: "\2192"; color:white;} /* animation on hover */
+.arrow.offset:hover::before { transform: translateX(110%); transition: all 1.5s; }
 
-      <!-- blue square -->
-      <div class="bsq"><div class="blue-square"></div></div>
+<!-- blue square -->
+<div class="bsq">
+    <div class="blue-square"></div>
+</div>
 
-      .bsq{
-        width:100%;
-        height:100%;
-        }
-        .blue-square{
-        position:relative;
-        top:25%;
-        height:50%; 
-        width:50%; 
-        background-color:blue; 
-        border-radius:10%; 
-        animation:toandfrom 4s linear infinite;
-        } 
-        @keyframes toandfrom {
-          0% {
-            transform: translateX(0px);
-          }
-          50% {
-            transform: translateX(140px);
-          }
-          100% {
-            transform: translateX(0px);
-          }
-        }
+.bsq{ width:100%; height:100%; } .blue-square{ position:relative; top:25%; height:50%; width:50%; background-color:blue; border-radius:10%; animation:toandfrom 4s linear infinite; } @keyframes toandfrom { 0% { transform: translateX(0px); } 50% {
+transform: translateX(140px); } 100% { transform: translateX(0px); } }
 
-        <!-- lite brite -->
-        <div class="body">	
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                </ul>
-            </div>
-            <div class="body">	
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                </ul>
-            </div>
-            <div class="body">	
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                </ul>
-            </div>
-            <div class="body">	
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                </ul>
-            </div>
-            <div class="body">	
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                </ul>
-            </div>
+<!-- lite brite -->
+<div class="body">
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<div class="body">
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<div class="body">
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<div class="body">
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<div class="body">
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
 
-            .body {position:relative;
-                top:15%;
-                left:15%
-                     }
-                     ul {
-                       display: flex;
-                     }
-                     ul li {
-                       list-style: none;
-                       width: 40px;
-                       height: 40px;
-                       background: #fff;
-                       border-radius: 50%;
-                 
-                       animation: animate 3s ease-in-out infinite;
-                     }
-                     @keyframes animate {
-                       0%,
-                       40%,
-                       100% {
-                         transform: scale(0.2);
-                       }
-                       20% {
-                         transform: scale(1);
-                       }
-                     }
-                 
-                     ul li:nth-child(1) {
-                       animation-delay: -1.2s;
-                       background: yellow;
-                       box-shadow: 0 0 50px yellow;
-                     }
-                     ul li:nth-child(2) {
-                       animation-delay: -1s;
-                       background: rgb(99, 247, 136);
-                       box-shadow: 0 0 50px rgb(99, 247, 136);
-                     }
-                     ul li:nth-child(3) {
-                       animation-delay: -0.8s;
-                       background: rgb(30, 243, 225);
-                       box-shadow: 0 0 50px  rgb(30, 243, 225);
-                     }
-                     ul li:nth-child(4) {
-                       animation-delay: -0.6s;
-                       background: rgb(241, 58, 58);
-                       box-shadow: 0 0 50px rgb(241, 58, 58);
-                     }
-                     ul li:nth-child(5) {
-                       animation-delay: -0.4s;
-                       background: rgb(247, 61, 176);
-                       box-shadow: 0 0 50px  rgb(247, 61, 176);
-                     }
+.body {position:relative; top:15%; left:15% } ul { display: flex; } ul li { list-style: none; width: 40px; height: 40px; background: #fff; border-radius: 50%; animation: animate 3s ease-in-out infinite; } @keyframes animate { 0%, 40%, 100% {
+transform: scale(0.2); } 20% { transform: scale(1); } } ul li:nth-child(1) { animation-delay: -1.2s; background: yellow; box-shadow: 0 0 50px yellow; } ul li:nth-child(2) { animation-delay: -1s; background: rgb(99, 247, 136); box-shadow: 0 0 50px
+rgb(99, 247, 136); } ul li:nth-child(3) { animation-delay: -0.8s; background: rgb(30, 243, 225); box-shadow: 0 0 50px rgb(30, 243, 225); } ul li:nth-child(4) { animation-delay: -0.6s; background: rgb(241, 58, 58); box-shadow: 0 0 50px rgb(241, 58,
+58); } ul li:nth-child(5) { animation-delay: -0.4s; background: rgb(247, 61, 176); box-shadow: 0 0 50px rgb(247, 61, 176); }
